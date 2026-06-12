@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESE/ES 2024 글루코코르티코이드 유발 부신부전 진료지침</title>
+<style>
+  :root {
+    --bg:#f6f8fa;--surface:#fff;--surface2:#f0f2f5;--border:#d0d7de;
+    --accent:#0969da;--accent2:#0550ae;--green:#1a7f37;--yellow:#9a6700;
+    --red:#cf222e;--orange:#bc4c00;--text:#1f2328;--text2:#57606a;
+    --teal:#0a7c8a;--purple:#5a3ea0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+  header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;position:sticky;top:0;z-index:100;}
+  .header-inner{width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:4px;}
+  .logo-badge{background:var(--teal);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
+  .logo-badge2{background:var(--purple);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
+  .tab-bar{display:flex;justify-content:center;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+  .tab-bar::-webkit-scrollbar{display:none;}
+  .tab-bar-inner{width:100%;max-width:960px;display:flex;align-items:center;gap:2px;padding:0 4px;}
+  .tab{padding:7px 11px;font-size:11.5px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;user-select:none;flex-shrink:0;}
+  .tab:hover{color:var(--text);}
+  .tab.active{color:var(--teal);border-bottom-color:var(--teal);}
+  .tab-abbr-wrap{display:flex;align-items:center;padding:4px 4px;margin-left:4px;flex-shrink:0;position:relative;}
+  .main{padding:12px 16px;max-width:960px;margin:0 auto;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  @media(max-width:680px){.grid2,.grid3{grid-template-columns:1fr;}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px;}
+  .card-header{background:var(--surface2);padding:8px 12px;font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+  .card-header .toggle{font-size:13px;transition:transform .2s;}
+  .card-header.open .toggle{transform:rotate(180deg);}
+  .card-body{padding:10px 12px;}
+  .card-body.collapsed{display:none;}
+  .stat-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+  .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px 14px;flex:1;min-width:90px;text-align:center;}
+  .stat-val{font-size:18px;font-weight:700;color:var(--teal);}
+  .stat-lbl{font-size:10px;color:var(--text2);margin-top:2px;}
+  .rec-list{list-style:none;}
+  .rec-item{padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start;}
+  .rec-item:last-child{border-bottom:none;}
+  .rec-text{font-size:12px;color:var(--text);line-height:1.65;}
+  .rec-text strong{color:#1f2328;}
+  .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:1px;}
+  .badge-strong{background:#dafbe1;color:#116329;border:1px solid #1a7f37;}
+  .badge-weak{background:#fff8c5;color:#7a4b00;border:1px solid #d4a017;}
+  .badge-gcp{background:#e0f5f5;color:#075050;border:1px solid var(--teal);}
+  .badge-vlow{background:#ffebe9;color:#82071e;border:1px solid var(--red);}
+  .badge-low{background:#fff8c5;color:#7a4b00;border:1px solid #d4a017;}
+  .badge-mod{background:#ddf4ff;color:var(--accent2);border:1px solid var(--accent2);}
+  .badge-high{background:#dafbe1;color:#116329;border:1px solid #1a7f37;}
+  .alert{padding:8px 12px;border-radius:6px;font-size:12px;margin:8px 0;display:flex;gap:8px;align-items:flex-start;}
+  .alert-info{background:#ddf4ff;border-left:3px solid var(--accent2);color:#0550ae;}
+  .alert-warn{background:#fff8c5;border-left:3px solid #d4a017;color:#7a4b00;}
+  .alert-danger{background:#ffebe9;border-left:3px solid var(--red);color:#82071e;}
+  .alert-success{background:#dafbe1;border-left:3px solid var(--green);color:#116329;}
+  .alert-teal{background:#e0f5f5;border-left:3px solid var(--teal);color:#075050;}
+  .alert-purple{background:#f3e5f5;border-left:3px solid var(--purple);color:#5a3ea0;}
+  .tc-table{width:100%;border-collapse:collapse;font-size:11.5px;}
+  .tc-table th{background:var(--surface2);color:var(--text2);padding:5px 8px;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px;font-weight:600;text-align:left;border-bottom:1px solid var(--border);}
+  .tc-table td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:top;}
+  .tc-table tr:last-child td{border-bottom:none;}
+  .tc-table tr:hover td{background:rgba(0,0,0,.02);}
+  .acc{border:1px solid var(--border);border-radius:6px;margin-bottom:6px;overflow:hidden;}
+  .acc-hdr{background:var(--surface2);padding:7px 12px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .acc-hdr:hover{background:#e8eaec;}
+  .acc-body{display:none;padding:10px 12px;font-size:12px;line-height:1.65;}
+  .flow-box{border:1px solid var(--border);border-radius:6px;background:var(--surface);padding:8px 12px;margin-bottom:6px;font-size:12px;line-height:1.6;}
+  .flow-arrow{text-align:center;color:var(--text2);font-size:14px;margin:2px 0;}
+  .step-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:10px;font-weight:700;flex-shrink:0;margin-right:6px;}
+  .tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;}
+  .cortisol-bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin:8px 0;font-size:11px;font-weight:700;}
+  .cortisol-red{background:#ffebe9;color:#82071e;flex:1.5;display:flex;align-items:center;justify-content:center;border:1px solid #f1a7a7;}
+  .cortisol-yellow{background:#fff8c5;color:#7a4b00;flex:1;display:flex;align-items:center;justify-content:center;border:1px solid #e6c87a;}
+  .cortisol-green{background:#dafbe1;color:#116329;flex:1;display:flex;align-items:center;justify-content:center;border:1px solid #8fd4a4;}
+  ::-webkit-scrollbar{width:5px;height:5px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:#c8d0d9;border-radius:3px;}
+  ul.dot{padding-left:18px;}
+  ul.dot li{margin-bottom:3px;font-size:12px;line-height:1.6;}
+  ol.num{padding-left:18px;}
+  ol.num li{margin-bottom:3px;font-size:12px;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+      <span class="logo-badge">ESE 2024</span>
+      <span class="logo-badge2">Endocrine Society</span>
+      <h1 style="font-size:16px;font-weight:700;color:var(--text)">글루코코르티코이드 유발 부신부전 진료지침</h1>
+    </div>
+    <div style="text-align:center;line-height:1.5">
+      <span style="color:var(--text2);font-size:11px">Diagnosis and Therapy of Glucocorticoid-induced Adrenal Insufficiency — ESE/ES Joint Clinical Guideline</span><br>
+      <span style="font-size:10px;color:var(--text2)">Beuschlein F, Else T, et al. · J Clin Endocrinol Metab 2024;109:1657–1683 · doi: 10.1210/clinem/dgae250</span>
+    </div>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <div class="tab-bar-inner">
+    <div class="tab active" onclick="showTab('overview')">🏠 개요</div>
+    <div class="tab" onclick="showTab('epidemiology')">📊 역학·병태</div>
+    <div class="tab" onclick="showTab('definitions')">📖 정의</div>
+    <div class="tab" onclick="showTab('rec1')">📋 일반권고</div>
+    <div class="tab" onclick="showTab('taper')">📉 감량·진단</div>
+    <div class="tab" onclick="showTab('cortisol')">🧪 코르티솔검사</div>
+    <div class="tab" onclick="showTab('nonoral')">💨 비경구 GC</div>
+    <div class="tab" onclick="showTab('crisis')">🚨 부신위기</div>
+    <div class="tab" onclick="showTab('stressdose')">💉 스트레스 용량</div>
+    <div class="tab" onclick="showTab('tables')">📁 참조표</div>
+    <div class="tab-abbr-wrap">
+      <div style="position:relative;display:flex;align-items:center;flex-shrink:0">
+        <span style="position:absolute;left:8px;color:var(--text2);font-size:12px;pointer-events:none">🔍</span>
+        <input id="abbr-input" type="text" placeholder="약어" oninput="filterAbbr(this.value)"
+          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size:12px;width:90px;outline:none;"
+          onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div id="abbr-dropdown" style="display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;width:440px;max-height:360px;overflow-y:auto;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.12)">
+        <div id="abbr-grid-drop"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ═══ OVERVIEW ═══ -->
+<div id="tab-overview" class="panel active">
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-val">≥1%</div><div class="stat-lbl">성인 인구 중 만성 GC 사용자</div></div>
+    <div class="stat-box"><div class="stat-val">48.7%</div><div class="stat-lbl">경구 GC 사용자 GC-AI 빈도</div></div>
+    <div class="stat-box"><div class="stat-val">52.2%</div><div class="stat-lbl">관절강내 주사 GC-AI 빈도</div></div>
+    <div class="stat-box"><div class="stat-val">&gt;300 nmol/L</div><div class="stat-lbl">HPA 회복 기준 조조 코르티솔</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>📋 진단·관리 전체 흐름</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="flow-box" style="border-left:3px solid var(--teal)">
+        <strong>① GC 사용 여부·기간·용량 확인</strong><br>
+        <span style="color:var(--text2);font-size:11px">3–4주 미만 단기 사용 → HPA 억제 위험 낮음, taper 불필요</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--accent2)">
+        <strong>② 원발 질환 조절 여부 확인</strong><br>
+        <span style="color:var(--text2);font-size:11px">질환이 조절되었을 때만 taper 시작 — 초생리용량에서 생리용량으로 점감 (prednisone 4–6 mg 목표)</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--yellow)">
+        <strong>③ 생리용량 도달 후 — 두 가지 전략 중 선택</strong><br>
+        <span style="font-size:11.5px;color:var(--text)">A. 임상 증상 모니터링하며 점진적 taper 지속<br>B. 조조 혈청 코르티솔 측정</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--green)">
+        <strong>④ 코르티솔 해석</strong>
+        <div class="cortisol-bar" style="margin-top:6px">
+          <div class="cortisol-red">&lt;150 nmol/L<br>GC-AI 가능성 높음</div>
+          <div class="cortisol-yellow">150–300 nmol/L<br>불확정 → 재검</div>
+          <div class="cortisol-green">&gt;300 nmol/L<br>HPA 회복 → GC 중단 가능</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--orange)">
+        <strong>⑤ GC-AI 확인 시 환자 교육·스트레스 용량 지도</strong><br>
+        <span style="color:var(--text2);font-size:11px">부신위기 예방 교육, 스테로이드 응급 카드, 비경구 하이드로코르티손 자가주사 교육</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span>📌 권고문 요약 목록</span><span class="toggle">▾</span>
+      </div>
+      <div class="card-body">
+        <ul class="rec-list">
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 1.1</strong> 비내분비 질환 GC 치료 환자는 일반적으로 내분비 전문의 평가 불필요</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 1.2–1.3</strong> GC 시작 시 부신부전·금단증상·스트레스 용량에 대한 환자 교육 필수</span></li>
+          <li class="rec-item"><span class="badge badge-vlow">⊕○○○</span><span class="rec-text"><strong>R 2.1</strong> 3–4주 미만 단기 GC → taper 없이 중단 가능</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 2.2</strong> 장기 GC taper는 원발질환 조절 확인 후, 생리용량까지 점감</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 2.3</strong> GC 금단증상 고려 — 심할 경우 직전 내성 용량으로 일시 증량</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 2.4</strong> 초생리용량 GC 투여 중 부신부전 검사 불필요</span></li>
+          <li class="rec-item"><span class="badge badge-vlow">⊕○○○</span><span class="rec-text"><strong>R 2.5</strong> 장기작용 GC(덱사메타손·베타메타손)는 단기작용 GC로 전환 권고</span></li>
+          <li class="rec-item"><span class="badge badge-vlow">⊕○○○</span><span class="rec-text"><strong>R 2.6</strong> 생리용량 도달 후 ① 임상 모니터링 taper 또는 ② 조조 코르티솔 측정 중 선택</span></li>
+          <li class="rec-item"><span class="badge badge-vlow">⊕○○○</span><span class="rec-text"><strong>R 2.7</strong> HPA 회복 확인 시 조조 코르티솔 우선 사용; &gt;300 nmol/L → 중단 가능</span></li>
+          <li class="rec-item"><span class="badge badge-vlow">⊕○○○</span><span class="rec-text"><strong>R 2.8</strong> 동적 검사 (ACTH 자극 등) 는 일상적으로 불필요</span></li>
+          <li class="rec-item"><span class="badge badge-vlow">⊕○○○</span><span class="rec-text"><strong>R 2.9</strong> 비경구 GC 사용자 중 특정 고위험군은 GC-AI 의심</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 2.10</strong> 외인성 쿠싱 증상 환자 → GC-AI 있다고 가정하고 관리</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 2.11</strong> 1년 경과 후에도 HPA 미회복 → 내분비 전문의 의뢰</span></li>
+          <li class="rec-item"><span class="badge badge-strong">강권고</span><span class="rec-text"><strong>R 2.12</strong> GC-AI에서 플루드로코르티손 사용 불필요 (미네랄로코르티코이드 기능 보존)</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 3.1</strong> 생화학 검사 미시행 GC 사용자 → 스트레스 시 용량 보충 투여</span></li>
+          <li class="rec-item"><span class="badge badge-gcp">GCP</span><span class="rec-text"><strong>R 3.2</strong> 혈역학 불안정·구토·설사 → 부신위기 의심, 비경구 GC + 수액 즉시 투여</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header open" onclick="toggleCard(this)">
+        <span>⚠️ 권고 등급 체계</span><span class="toggle">▾</span>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-success"><span>✅</span><span><strong>강권고 (Recommend)</strong> — 합리적으로 정보를 가진 모든 임상의·환자가 따를 것으로 예상</span></div>
+        <div class="alert alert-warn"><span>⚠️</span><span><strong>약권고 (Suggest)</strong> — 대부분이 따르나 상당수는 그렇지 않을 수 있음</span></div>
+        <div class="alert alert-teal"><span>🔵</span><span><strong>Good Clinical Practice (GCP)</strong> — 근거 기반이 아닌 전문가 경험 기반, 공식 등급 없음</span></div>
+        <br>
+        <table class="tc-table">
+          <tr><th>근거 수준</th><th>기호</th><th>의미</th></tr>
+          <tr><td>매우 낮음</td><td>⊕○○○</td><td>추정치에 대한 확신 매우 낮음</td></tr>
+          <tr><td>낮음</td><td>⊕⊕○○</td><td>추정치에 대한 확신 제한적</td></tr>
+          <tr><td>중등</td><td>⊕⊕⊕○</td><td>추정치에 대한 중등도 확신</td></tr>
+          <tr><td>높음</td><td>⊕⊕⊕⊕</td><td>추정치에 대한 높은 확신</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <span>ℹ️</span>
+    <span>본 지침은 ESE (European Society of Endocrinology)와 Endocrine Society (미국)가 공동 발행한 최초의 GC 유발 부신부전 임상진료지침이다 (JCEM 2024). 대상: 장기 초생리용량 GC 치료를 받은 성인 환자.</span>
+  </div>
+</div>
+
+<!-- ═══ EPIDEMIOLOGY ═══ -->
+<div id="tab-epidemiology" class="panel">
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>📊 GC 사용 역학</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="grid2">
+        <div>
+          <div class="alert alert-teal"><span>🌍</span><span>영국·미국 성인의 <strong>약 1%</strong>가 어느 시점에나 경구 GC를 사용 중</span></div>
+          <ul class="dot">
+            <li>영국: 연속 3개월 이상 경구 GC 처방 0.5% (전체), 55세 이상 1.4%</li>
+            <li>덴마크: 1차 의료 연간 전신 GC 처방률 3%, 노인 최대 10%</li>
+            <li>미국 보험 데이터베이스: 성인 21%가 3년간 1회 이상 경구 GC 처방 수령 (중앙값 20 mg prednisone 등가, 6일)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="alert alert-warn"><span>⚠️</span><span>GC-AI 발생률 (메타분석, 생화학 기준)</span></div>
+          <table class="tc-table">
+            <tr><th>투여 경로</th><th>GC-AI 빈도</th></tr>
+            <tr><td>비강 내</td><td>4.2% (0.5–28.9%)</td></tr>
+            <tr><td><strong>경구</strong></td><td><strong>48.7%</strong> (36.9–60.6%)</td></tr>
+            <tr><td><strong>관절강내 주사</strong></td><td><strong>52.2%</strong> (40.5–63.6%)</td></tr>
+            <tr><td>흡입 (고용량)</td><td>21.5% (12.0–35.5%)</td></tr>
+            <tr><td>흡입 (&gt;1년)</td><td>27.4% (17.7–39.8%)</td></tr>
+            <tr><td>피부 (도포)</td><td>4.7% (1.1–18.5%)</td></tr>
+          </table>
+          <div style="font-size:10.5px;color:var(--text2);margin-top:4px">※ 생화학적 GC-AI의 90%는 무증상 — 임상적 관련성과 불일치</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>🔬 병태생리 — HPA 축 억제 기전</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="flow-box" style="border-left:3px solid var(--red)">
+        <strong>외인성 GC 투여</strong> → 시상하부 CRH 분비 억제 + 뇌하수체 ACTH 분비 억제 (내인성 피드백 기전과 동일)
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--orange)">
+        <strong>장기 초생리용량 지속</strong> → 뇌하수체 전엽 전반적 반응성 저하 → Crooke 유리질 변화 (부신피질자극호르몬 세포) → 부신피질 위축
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--yellow)">
+        <strong>GC 중단 후</strong> → ACTH 재분비 재개 → 부신피질 자극 → 코르티솔 생산 회복 (개인차 매우 큼: 수개월~4년)
+      </div>
+      <br>
+      <div class="alert alert-purple">
+        <span>💡</span>
+        <span><strong>핵심 개념:</strong> 초생리용량 GC 범위에서 용량을 감량할 때 나타나는 증상은 <em>GC 금단증후군</em>이며, 부신부전이 아니다. 부신부전 증상은 총 GC 용량이 생리 수준 이하로 떨어질 때 발현된다.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>💀 GC-AI 관련 이환·사망</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="dot">
+        <li>덴마크 코호트 (경구 GC ≥3개월 중단 환자 286,680명): GC 중단 후 저혈압 IRR 2.5, 위장관 증상 IRR 1.7, 저혈당 IRR 2.2, 저나트륨혈증 IRR 1.5 증가</li>
+        <li>네덜란드 연구: GC-AI 환자 부신위기 발생률 <strong>15.1/100 인년</strong> (1차 부신부전 5.2, 2차 부신부전 3.6보다 높음) — 단, 소규모, 선택 편향 주의</li>
+        <li>영국 후향 코호트 (경구 GC 사용자 70,638명): GC 중단 후 <strong>첫 2개월</strong> 사망률 급증, 이후 3개월부터 감소</li>
+        <li>Prednisone &gt;5 mg/일 사용: 류마티스관절염 환자 전체 사망 adjusted HR 1.97 (1.81–2.15)</li>
+        <li>일상적 GC 중단 후 부신위기 발생: 부신부전 환자의 상당 비율이 미진단 상태 → 인식 부재로 인한 지연 치료 위험</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DEFINITIONS ═══ -->
+<div id="tab-definitions" class="panel">
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>📖 핵심 용어 정의</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <table class="tc-table">
+        <tr><th>용어</th><th>정의</th></tr>
+        <tr>
+          <td><strong>생리적 일일 등가 용량<br>(Physiologic daily dose equivalent)</strong></td>
+          <td>내인성 코르티솔 생산량에 상당하는 GC 용량<br>하이드로코르티손 15–25 mg / 프레드니손 4–6 mg / 메틸프레드니솔론 3–5 mg / 덱사메타손 0.25–0.5 mg<br><span style="color:var(--text2);font-size:11px">※ 내인성 코르티솔 생산량: 약 9–10 mg/일 (생체이용률 고려 위 수치 사용)</span></td>
+        </tr>
+        <tr>
+          <td><strong>초생리용량 GC<br>(Supraphysiologic)</strong></td>
+          <td>생리적 일일 등가 용량을 초과하는 용량</td>
+        </tr>
+        <tr>
+          <td><strong>단기 GC 치료<br>(Short-term)</strong></td>
+          <td>3–4주 미만 GC 치료</td>
+        </tr>
+        <tr>
+          <td><strong>장기 GC 치료<br>(Long-term)</strong></td>
+          <td>생리적 등가 용량 초과 + 3–4주 이상 지속</td>
+        </tr>
+        <tr>
+          <td><strong>GC taper</strong></td>
+          <td>• 치료적 taper: 원발 질환 관리 목적으로 용량 감량<br>• 내분비적 taper: GC 금단 및 부신부전 관리 목적으로 감량</td>
+        </tr>
+        <tr>
+          <td><strong>GC 금단증후군<br>(Glucocorticoid withdrawal syndrome)</strong></td>
+          <td>초생리용량 GC 범위 내에서 용량 감량 시 나타나는 증상 — 부신부전에 의한 것이 아님 (총 GC 용량이 여전히 생리 수준 이상이므로). 원발 질환의 증상도 아님.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>💊 GC 제제별 약리학적 특성 (Table 1)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <table class="tc-table">
+        <tr><th>제제</th><th>등가 용량</th><th>GC 역가 (상대)</th><th>혈장 반감기</th><th>생물학적 반감기</th><th>주요 적응</th></tr>
+        <tr style="background:#e0f5f5">
+          <td colspan="6" style="font-weight:700;font-size:11px;color:var(--teal)">단기작용 — 낮은 역가</td>
+        </tr>
+        <tr><td>하이드로코르티손</td><td>20 mg</td><td>1.0</td><td>90–120분</td><td>8–12시간</td><td>부신부전 대체</td></tr>
+        <tr><td>코르티손 아세테이트</td><td>25 mg</td><td>0.8</td><td>80–120분</td><td>8–12시간</td><td>부신부전 대체</td></tr>
+        <tr><td>데플라자코르트</td><td>7.5 mg</td><td>1.0</td><td>70–120분</td><td>미정의</td><td>Duchenne 근디스트로피</td></tr>
+        <tr style="background:#fff8c5">
+          <td colspan="6" style="font-weight:700;font-size:11px;color:var(--yellow)">중기작용 — 중등 역가</td>
+        </tr>
+        <tr><td>프레드니손</td><td>5 mg</td><td>4.0</td><td>60분</td><td>12–36시간</td><td>항염·면역억제, 부신부전</td></tr>
+        <tr><td>프레드니솔론</td><td>5 mg</td><td>4.0</td><td>115–200분</td><td>12–36시간</td><td>항염·면역억제, 부신부전</td></tr>
+        <tr><td>메틸프레드니솔론</td><td>4 mg</td><td>5.0</td><td>180분</td><td>12–36시간</td><td>항염·면역억제</td></tr>
+        <tr><td>트리암시놀론</td><td>4 mg</td><td>5.0</td><td>30분</td><td>12–36시간</td><td>항염·면역억제</td></tr>
+        <tr style="background:#ffebe9">
+          <td colspan="6" style="font-weight:700;font-size:11px;color:var(--red)">장기작용 — 가장 높은 역가 ⚠️ HPA 억제 위험 최고</td>
+        </tr>
+        <tr><td><strong>덱사메타손</strong></td><td>0.5 mg</td><td>30–60</td><td>200분</td><td>36–72시간</td><td>항염·면역억제 (급성 중증에서 단기 사용)</td></tr>
+        <tr><td><strong>베타메타손</strong></td><td>0.5 mg</td><td>25–40</td><td>300분</td><td>36–72시간</td><td>항염·면역억제 (급성 중증에서 단기 사용)</td></tr>
+      </table>
+      <div class="alert alert-danger" style="margin-top:8px">
+        <span>🚫</span><span>장기작용 GC (덱사메타손·베타메타손)는 생리 용량에서도 HPA 억제를 유발하고 일주기 리듬을 완전히 차단하므로, 필요가 없어지면 단기작용 제제로 전환해야 한다 (R 2.5).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>🔀 GC 금단증후군 vs 부신부전 vs 원발 질환 재발 감별 (Table 5)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <table class="tc-table">
+        <tr><th></th><th>GC 금단증후군</th><th>부신부전</th><th>원발 질환 재발</th></tr>
+        <tr>
+          <td><strong>증상</strong></td>
+          <td>전신 불쾌감, 피로, 오심, 근·관절통, 수면 장애, 기분 변화</td>
+          <td>전신 불쾌감, 피로, 오심, 근·관절통</td>
+          <td>질환 특이적 (예: RA의 관절통). 피로·전신 불쾌감은 중복</td>
+        </tr>
+        <tr>
+          <td><strong>징후</strong></td>
+          <td>쿠싱 양상 흔함 (특히 taper 초반)</td>
+          <td>체중 감소, 저혈압, 기립성 저혈압</td>
+          <td>질환 특이 징후 재출현</td>
+        </tr>
+        <tr>
+          <td><strong>발현 시점</strong></td>
+          <td>taper 어느 시점에서나; 주로 prednisone &lt;15 mg/일 이하</td>
+          <td>생리 이하 용량 시에만</td>
+          <td>GC 조절 불충분 시 어느 시점에서나</td>
+        </tr>
+        <tr>
+          <td><strong>생화학</strong></td>
+          <td>전해질 정상; GC 유발 고혈당 가능</td>
+          <td>저나트륨혈증, 저혈당</td>
+          <td>질환 특이 바이오마커 변화</td>
+        </tr>
+        <tr>
+          <td><strong>HPA 검사</strong></td>
+          <td>통상 권고하지 않음. 시행 시 ACTH·코르티솔 측정 불가</td>
+          <td>초기: ACTH↓·코르티솔↓. 회복기: ACTH 정상-상승·코르티솔↓</td>
+          <td>해당 없음</td>
+        </tr>
+        <tr>
+          <td><strong>부신위기 위험</strong></td>
+          <td>GC 투여 중이면 낮음 (GC-AI와 동반 가능)</td>
+          <td>미치료 시 위험 있음</td>
+          <td>해당 없음</td>
+        </tr>
+      </table>
+      <div class="alert alert-teal" style="margin-top:8px">
+        <span>💡</span><span><strong>임상 지침:</strong> GC 총 용량이 생리 이상이면 부신부전 증상은 없다 (위기 상황 또는 위장관 흡수 장애 제외). Prednisone 20–40 mg 사용 중 금단 증상이 나타날 수 있지만, 부신부전 걱정은 5–7.5 mg 이하로 taper될 때부터 한다.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ REC1 ═══ -->
+<div id="tab-rec1" class="panel">
+  <div class="alert alert-teal"><span>ℹ️</span><span>권고문 1: 비내분비 질환 GC 치료에 관한 일반 권고 및 환자 교육</span></div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 1.1 — 내분비 전문의 의뢰 여부 <span class="badge badge-strong" style="margin-left:6px">강권고</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-success"><span>✅</span><span><strong>권고:</strong> 비내분비 질환으로 GC를 사용하거나 감량 중인 환자는 일반적으로 내분비 전문의 평가가 필요하지 않다.</span></div>
+      <p style="margin-top:8px;font-size:12px;line-height:1.7"><strong>근거:</strong> GC 치료 관리는 처방 의사가 수행해야 할 일반 의학 기술이다. GC-AI 위험에 처한 환자 수(성인의 최소 1%)가 너무 많아 모든 경우에 내분비 전문의 진료를 제공하기 어렵다. 단, 다음 경우에는 내분비 전문의 의뢰를 고려:</p>
+      <ul class="dot" style="margin-top:6px">
+        <li>생리 용량에서 1년 이상 HPA 미회복 (R 2.11)</li>
+        <li>부신위기 병력이 있는 환자 (R 2.11)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 1.2 — 처방 의사의 환자 교육 <span class="badge badge-gcp" style="margin-left:6px">GCP</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-teal"><span>🎓</span><span><strong>권고:</strong> GC 치료를 시작하는 임상의는 환자에게 GC 치료의 다양한 내분비적 측면을 교육해야 한다.</span></div>
+      <p style="margin-top:8px;font-size:12px"><strong>교육 내용 (Table 2):</strong></p>
+      <table class="tc-table" style="margin-top:6px">
+        <tr><th>교육 항목</th><th>대상 환자</th><th>시기</th></tr>
+        <tr><td>외인성 쿠싱증후군 위험 (체중 증가, 근위부 근력 약화, 고혈당, 고혈압, 골다공증 등)</td><td>장기 초생리용량 GC 사용 모든 환자</td><td>치료 시작 시</td></tr>
+        <tr><td>만성 부신부전 발생 위험</td><td>같은 대상</td><td>치료 시작 시</td></tr>
+        <tr><td>스트레스 용량 전략</td><td>생리 또는 생리 이하 용량으로 감량된 환자</td><td>적어도 생리 범위 접근 시</td></tr>
+        <tr><td>비경구 응급 GC 자가주사</td><td>GC-AI 확인 또는 추정 환자</td><td>스트레스 용량 교육과 동시</td></tr>
+        <tr><td>GC 금단증후군</td><td>taper를 시작하려는 장기 초생리용량 GC 환자</td><td>taper 시작 시</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 1.3 — 환자 정보 접근성 보장 <span class="badge badge-gcp" style="margin-left:6px">GCP</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-teal"><span>📚</span><span>GC 치료를 받는 환자는 GC 치료의 내분비적 측면에 대한 최신·적절한 정보에 접근할 수 있어야 한다.</span></div>
+      <ul class="dot" style="margin-top:8px">
+        <li>연령·교육 수준·학습 방식에 맞는 정보 제공</li>
+        <li>가족 구성원 또는 주 돌봄자를 모든 교육 세션에 포함 권고</li>
+        <li>표준화된 환자 교육 프로그램이 부신위기 예방 지식과 자기 관리 자신감을 지속적으로 향상시킨다 (증거 있음)</li>
+        <li>ESE 스테로이드 응급 카드 소지 권장</li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:8px"><span>⚠️</span><span>GC-AI 확진 환자는 다른 부신부전 원인 환자에 비해 진단 인지도가 낮고, 응급 하이드로코르티손 자가주사 키트 보유율이 낮으며, 응급 상황에서 치료 지연을 더 많이 경험하는 것으로 보고됨.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAPER ═══ -->
+<div id="tab-taper" class="panel">
+  <div class="alert alert-teal"><span>ℹ️</span><span>권고문 2: 비내분비 질환 전신 GC 감량, GC 유발 부신부전 진단 및 접근, GC 금단증후군</span></div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.1 — 단기 GC (3–4주 미만) 중단 <span class="badge badge-vlow" style="margin-left:6px">⊕○○○</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-success"><span>💊</span><span><strong>약권고:</strong> 3–4주 미만 단기 GC 치료 환자는 용량에 관계없이 taper 없이 중단 가능하다. HPA 억제 우려가 낮아 검사 없이 중단할 수 있다.</span></div>
+      <p style="margin-top:8px;font-size:12px;line-height:1.7">단기 치료에서 임상적으로 유의한 HPA 억제가 발생한다는 근거가 없다. 단, 1 µg ACTH 검사에서 억제가 보고된 바 있으나, 이 검사는 250 µg 검사보다 검증이 부족하여 해석에 주의가 필요하다. 단기 GC도 패혈증, 위장관 출혈, 혈전색전증, 골절 등의 부작용은 여전히 발생할 수 있다.</p>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.2 — 장기 GC taper 원칙 <span class="badge badge-gcp" style="margin-left:6px">GCP</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-teal"><span>📉</span><span><strong>권고:</strong> 장기 GC taper는 원발 질환이 조절되고 GC가 더 이상 필요하지 않을 때만 시작한다. 생리 일일 등가 용량 (예: prednisone 4–6 mg)에 도달할 때까지 감량한다.</span></div>
+      <p style="margin-top:8px;font-size:12px"><strong>Taper 속도 가이드 (Table 4):</strong></p>
+      <table class="tc-table" style="margin-top:6px">
+        <tr><th>현재 prednisone 등가 용량</th><th>감량폭</th><th>간격</th></tr>
+        <tr><td>&gt;40 mg/일</td><td>5–10 mg씩 감량</td><td>매 1주</td></tr>
+        <tr><td>20–40 mg/일</td><td>5 mg씩 감량</td><td>매 1주</td></tr>
+        <tr><td>10–20 mg/일</td><td>2.5 mg씩 감량</td><td>1–4주마다</td></tr>
+        <tr><td>5–10 mg/일</td><td>1 mg씩 감량</td><td>1–4주마다</td></tr>
+        <tr><td><strong>5 mg/일</strong> (생리용량 범위)</td><td>1 mg씩 감량 (저용량 제제 없으면 HC 20 mg으로 대체 후 5 mg씩 감량)</td><td>매 4주</td></tr>
+      </table>
+      <div class="alert alert-warn" style="margin-top:8px"><span>⚠️</span><span>초생리용량 범위에서는 부신피질 위축과 GC-AI 동반 가능성이 높아 부신기능 검사가 불필요하다. 생리 용량에 도달했을 때 검사·평가를 시작한다.</span></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.3 — GC 금단증후군 관리 <span class="badge badge-gcp" style="margin-left:6px">GCP</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-warn"><span>⚠️</span><span><strong>권고:</strong> GC taper 중 금단증후군 가능성을 염두에 두어야 한다. 심한 경우 가장 최근에 내성이 있었던 용량으로 일시 증량하고 taper 기간을 늘린다.</span></div>
+      <div class="grid2" style="margin-top:8px">
+        <div>
+          <p style="font-size:12px;font-weight:600;margin-bottom:4px">금단증후군 특징</p>
+          <ul class="dot">
+            <li>Cushing 수술 후 환자의 40–67%에서 발생</li>
+            <li>관절통, 근육통, 근력 약화, 피로, 수면 장애, 기분 변화 등 최대 50%</li>
+            <li>염증성 사이토카인 증가에 의한 것으로 추정</li>
+            <li>Prednisone &lt;7.5 mg 이하 용량에서 심해지는 경향</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:600;margin-bottom:4px">감별 및 관리</p>
+          <ul class="dot">
+            <li>총 GC 용량이 생리 이상이면 부신부전 아님 (원발 질환 재발은 감별 필요)</li>
+            <li>느린 taper 속도가 유일한 예방법</li>
+            <li>쿠싱 임상 중증도 점수가 높을수록 taper 더 느리게</li>
+            <li>심한 금단증후군: 이전 내성 용량으로 일시 복귀 후 더 천천히 감량</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.4 — 초생리용량 GC 사용 중 검사 불필요 <span class="badge badge-gcp" style="margin-left:6px">GCP</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-info"><span>ℹ️</span><span>초생리용량 GC 사용 중이거나 원발 질환 치료를 위해 계속 GC가 필요한 경우, 부신기능 검사는 불필요하다. HPA 억제가 예상되는 상태에서 검사는 의미가 없다. 단, 이들 환자에게도 GC-AI 관리 교육은 필요하다 (R 3.1).</span></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.5 — 장기작용 GC를 단기작용으로 전환 <span class="badge badge-vlow" style="margin-left:6px">⊕○○○</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-warn"><span>🔄</span><span><strong>약권고:</strong> 덱사메타손·베타메타손과 같은 장기작용 GC는 더 이상 필요하지 않을 때 단기작용 GC (예: 하이드로코르티손·프레드니손)로 전환을 권고한다.</span></div>
+      <div class="grid2" style="margin-top:8px">
+        <div class="alert alert-danger"><span>🚫</span><span>장기작용 GC는 지속적이고 비일주기적인 GC 효과로 인해 HPA 축 회복 자체가 불가능하다.</span></div>
+        <div class="alert alert-success"><span>✅</span><span>단기작용 GC (하이드로코르티손·프레드니손)는 아침 투여 시 일주기 리듬을 보존하여 HPA 회복 가능.</span></div>
+      </div>
+      <p style="font-size:12px;margin-top:6px">대체 용량 (Table 1 기준): 하이드로코르티손 15–25 mg, 프레드니손 4–6 mg, 메틸프레드니솔론 3–5 mg, 덱사메타손 0.25–0.5 mg이 생리 등가 용량에 해당한다.</p>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.11 — 내분비 전문의 의뢰 기준 <span class="badge badge-gcp" style="margin-left:6px">GCP</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-warn"><span>📋</span><span>다음에 해당하면 내분비 전문의에게 의뢰를 권고한다:</span></div>
+      <ul class="dot" style="margin-top:8px">
+        <li>생리 일일 등가 용량 투여 중 <strong>1년 경과 후에도 HPA 미회복</strong>: 다른 부신부전 원인 (예: 뇌하수체 원인) 감별 필요</li>
+        <li><strong>부신위기 병력</strong>이 있는 GC 사용 환자</li>
+      </ul>
+      <div class="alert alert-info" style="margin-top:8px"><span>ℹ️</span><span>일부 연구에서 GC-AI는 중단 후 최대 2–4년까지 지속될 수 있다. 4년 이상 지속 시 회복 가능성이 매우 낮아 장기 GC 대체 요법이 필요하다. 단, 내분비 전문의도 GC taper를 위한 특수 진단·치료법을 추가로 제공할 수 없음을 인식해야 한다.</span></div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <div class="acc-hdr" onclick="toggleAcc(this)">
+      <span>R 2.12 — 플루드로코르티손 불필요 <span class="badge badge-strong" style="margin-left:6px">강권고</span></span><span>▾</span>
+    </div>
+    <div class="acc-body">
+      <div class="alert alert-success"><span>✅</span><span><strong>권고:</strong> GC-AI 환자에게 플루드로코르티손을 사용하지 않도록 권고한다.</span></div>
+      <p style="margin-top:6px;font-size:12px">근거: GC-AI (2차·3차 부신부전)에서는 레닌-안지오텐신 시스템에 의해 알도스테론 분비가 유지되므로 미네랄로코르티코이드 기능이 보존된다. 플루드로코르티손 대체가 필요하지 않다 (1차 부신부전과의 차이).</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CORTISOL ═══ -->
+<div id="tab-cortisol" class="panel">
+  <div class="alert alert-teal"><span>🧪</span><span>권고문 2.6–2.8: 생리용량 도달 후 HPA 회복 평가</span></div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 2.6 — 생리용량 도달 후 두 가지 전략 선택 (⊕○○○)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="grid2">
+        <div>
+          <div class="alert alert-success"><span>A</span><span><strong>전략 1: 임상 모니터링하며 점진적 taper 지속</strong></span></div>
+          <ul class="dot">
+            <li>부신부전 증상·징후를 주의 깊게 모니터링하며 계속 감량</li>
+            <li>증상 발현 시 GC 재시작, HPA 회복 확인까지 중단 금지</li>
+            <li>증상 없으면 GC 중단까지 taper 지속</li>
+          </ul>
+        </div>
+        <div>
+          <div class="alert alert-info"><span>B</span><span><strong>전략 2: 조조 혈청 코르티솔 측정</strong></span></div>
+          <ul class="dot">
+            <li>GC 마지막 복용 24시간 후 오전 8–9시 채혈</li>
+            <li>코르티솔 결과에 따라 GC 용량 조절 (R 2.7 기준 적용)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-purple" style="margin-top:8px"><span>💡</span><span>어느 전략이 임상 결과나 비용-편익 면에서 우월한지에 대한 연구 없음. 환자 동반질환, 병용 약물, 연령, GC-AI 사전 확률, 진료 상황에 따라 개별화.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 2.7 — 조조 코르티솔 해석 기준 (⊕○○○)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-info"><span>ℹ️</span><span>조조 코르티솔은 연속적 스펙트럼으로 해석해야 한다. 높을수록 HPA 회복 가능성 높음. 아래 기준은 가이드이며, 절대적 cut-off로 해석하지 말 것.</span></div>
+      
+      <div style="margin:12px 0">
+        <div class="cortisol-bar" style="height:36px;font-size:12px">
+          <div class="cortisol-red">&lt;150 nmol/L<br>(5 µg/dL)</div>
+          <div class="cortisol-yellow">150–300 nmol/L<br>(5–10 µg/dL)</div>
+          <div class="cortisol-green">&gt;300 nmol/L<br>(10 µg/dL)</div>
+        </div>
+        <div style="display:flex;font-size:11px;color:var(--text2);gap:2px;margin-top:2px">
+          <div style="flex:1.5;text-align:center">GC-AI 가능성 높음<br>생리용량 GC 유지, 수개월 후 재검</div>
+          <div style="flex:1;text-align:center">불확정<br>생리용량 유지, 수주~수개월 후 재검<br>동적 검사 고려</div>
+          <div style="flex:1;text-align:center">HPA 회복<br>GC 중단 가능</div>
+        </div>
+      </div>
+
+      <table class="tc-table">
+        <tr><th>코르티솔 범위</th><th>권고 조치</th></tr>
+        <tr><td style="background:#ffebe9"><strong>&lt;150 nmol/L (&lt;5 µg/dL)</strong></td><td>생리 일일 등가 용량 GC 유지 (최저 안전 용량 목표), 수개월 후 재측정. 동적 검사는 도움 안 됨.</td></tr>
+        <tr><td style="background:#fff8c5"><strong>150–300 nmol/L (5–10 µg/dL)</strong></td><td>생리 일일 등가 용량 GC 유지, 수주~수개월 후 재측정. 동적 검사 고려.</td></tr>
+        <tr><td style="background:#dafbe1"><strong>&gt;300 nmol/L (&gt;10 µg/dL)</strong></td><td>GC 안전하게 중단 가능.<sup>*</sup></td></tr>
+      </table>
+      
+      <div class="alert alert-warn" style="margin-top:8px"><span>⚠️</span><span><sup>*</sup> &gt;300 nmol/L 환자 중 일부는 주요 스트레스 (패혈증·수술·외상) 시 여전히 코르티솔 반응 부전 가능. 임상 판단 하에 스트레스 GC 커버 제공 고려. 동적 검사도 고려 가능.</span></div>
+
+      <div class="acc" style="margin-top:10px">
+        <div class="acc-hdr" onclick="toggleAcc(this)"><span>📌 조조 코르티솔 측정 시 주의 사항</span><span>▾</span></div>
+        <div class="acc-body">
+          <ul class="dot">
+            <li><strong>채혈 시간:</strong> 오전 8–9시, GC 마지막 투여 24시간 후 (덱사메타손 제외)</li>
+            <li><strong>CBG 교란:</strong> 경구 에스트로겐·임신 (코르티솔↑), 저알부민혈증 (고도 간경화·신증후군·영양불량) (코르티솔↓) → 이 경우 cut-off 적용 불가</li>
+            <li><strong>일주기 리듬 교란:</strong> 야간 근무자·심한 불면·시차 → 조조 코르티솔 위음성 가능</li>
+            <li><strong>assay 차이:</strong> 면역측정법 (다클론 &lt; 단클론 항체 &lt; LC-MS/MS 순으로 정확). LC-MS/MS 기준 &gt;327 nmol/L → 감도 98%, NPV 99%. 각 기관 assay 기준치 숙지 필요.</li>
+            <li><strong>DHEA-S:</strong> 진단 정확도는 있지만 코르티솔 회복이 DHEA-S 회복보다 먼저 → HPA 회복 감지에 덜 유용</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 2.8 — 동적 검사 (ACTH 자극검사 등) 일상 사용 권고 안함 (⊕○○○)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-warn"><span>⚠️</span><span><strong>약권고:</strong> GC taper/중단 중인 환자에게 동적 검사를 일상적으로 시행하지 않는다. 조조 코르티솔 불확정 시 고려 가능.</span></div>
+      <table class="tc-table" style="margin-top:8px">
+        <tr><th>검사</th><th>특징</th><th>GC-AI에서 역할</th></tr>
+        <tr><td>250 µg ACTH (1-24) 자극검사</td><td>가장 널리 사용. 30·60분 코르티솔 &lt;500 nmol/L → AI 시사</td><td>불확정 조조 코르티솔 시 고려. 단기 GC 사용 후 신뢰성 저하 (피질 위축 미진 상태)</td></tr>
+        <tr><td>1 µg ACTH 자극검사</td><td>상업용 제제 없음, 표준화 미흡</td><td><strong>권고하지 않음</strong> — 250 µg 대비 진단 우위 없음</td></tr>
+        <tr><td>야간 메티라폰 검사</td><td>전체 HPA 축 평가, 부작용 위험</td><td>가용 시 고려 가능 (경험 있는 기관)</td></tr>
+        <tr><td>인슐린 내성 검사 (ITT)</td><td>HPA 전체 평가, 저혈당 위험</td><td>가용·경험 있는 기관에서만. GC-AI 검사 비교 연구 없음</td></tr>
+      </table>
+      <div class="alert alert-info" style="margin-top:8px"><span>ℹ️</span><span>동적 검사 결과는 부신위기 등 임상 결과와 연계된 연구가 거의 없다. 이용 가능성·비용·접근성에 따라 결정. 시행 시 마지막 GC 투여 24시간 후 시행.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NON-ORAL GC ═══ -->
+<div id="tab-nonoral" class="panel">
+  <div class="alert alert-teal"><span>💨</span><span>권고문 2.9–2.10: 비경구 GC 제제와 GC-AI</span></div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 2.9 — 비경구 GC 사용자 중 GC-AI 의심 고위험군 (⊕○○○)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-warn"><span>⚠️</span><span>다음에 해당하는 경우 GC-AI를 의심해야 한다:</span></div>
+      <ol class="num" style="margin-top:8px">
+        <li>비경구 GC 제제의 현재 또는 최근 사용 중 부신부전 증상·징후 발현</li>
+        <li>여러 GC 제제 동시 사용</li>
+        <li>고용량 흡입 또는 국소 GC 사용</li>
+        <li>흡입 또는 국소 GC를 1년 이상 사용</li>
+        <li>최근 2개월 내 관절강내 GC 주사</li>
+        <li>강력한 CYP3A4 억제제 병용 투여</li>
+      </ol>
+
+      <div style="margin-top:10px">
+        <div class="acc">
+          <div class="acc-hdr" onclick="toggleAcc(this)"><span>💨 흡입 GC (ICS)와 GC-AI</span><span>▾</span></div>
+          <div class="acc-body">
+            <ul class="dot">
+              <li>전체 ICS 사용자 GC-AI: 7.8% (4.2–13.9%). 고용량: 21.5%, 1년 이상: 27.4%</li>
+              <li><strong>Fluticasone propionate</strong>: 증상성 GC-AI·외인성 쿠싱증후군에 가장 자주 연관 — 반감기 14.4시간, 덱사메타손 대비 GC 수용체 결합력 18배</li>
+              <li>ICS 중 고용량 기준:<br>
+                Fluticasone propionate &gt;500 µg/일<br>
+                Beclometasone (일반) &gt;1,000 µg/일, (초미립자) &gt;400 µg/일<br>
+                Budesonide &gt;800 µg/일<br>
+                Ciclesonide &gt;320 µg/일<br>
+                Fluticasone furoate &gt;200 µg/일<br>
+                Mometasone furoate &gt;400 µg/일</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc">
+          <div class="acc-hdr" onclick="toggleAcc(this)"><span>💉 관절강내 GC 주사와 GC-AI</span><span>▾</span></div>
+          <div class="acc-body">
+            <ul class="dot">
+              <li>관절강내 주사 GC-AI 빈도: 52.2% (40.5–63.6%) — 가장 높음</li>
+              <li>주사 후 수개월간 소변 GC 검출 → 장기 전신 흡수</li>
+              <li>통상 4주간 억제, 이후 4주 이내 회복 가능</li>
+              <li>주사 2개월 내 부신부전 증상·징후 모니터링 권고</li>
+              <li>단기간 복수 관절 동시 주사, 반복 주사 시 위험 증가</li>
+              <li>Triamcinolone hexacetonide: acetonide보다 전신 흡수 적을 수 있음</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc">
+          <div class="acc-hdr" onclick="toggleAcc(this)"><span>💊 CYP3A4 억제제 상호작용</span><span>▾</span></div>
+          <div class="acc-body">
+            <div class="alert alert-danger"><span>🚫</span><span>강력한 CYP3A4 억제제는 GC 혈중 농도를 현저히 증가시켜 HPA 억제 위험을 크게 높인다.</span></div>
+            <p style="font-size:12px;margin-top:6px"><strong>주요 강력 CYP3A4 억제제:</strong></p>
+            <p style="font-size:12px;line-height:1.8;margin-top:4px">보세프레비르, 세리티닙, 클라리스로마이신, 코비시스타트, 다루나비르, 이델라리십, 인디나비르, 이트라코나졸, 케토코나졸, 로피나비르, 미페프리스톤, 네파조돈, 넬피나비르, 포사코나졸, <strong>리토나비르 (가장 흔한 원인 — HIV/C형간염/COVID-19 항바이러스 복합제에 포함)</strong>, 사퀴나비르, 텔라프레비르, 텔리스로마이신, 보리코나졸</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>비경구 GC 제제별 GC-AI 위험 및 예방 전략 (Table 6)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <table class="tc-table">
+        <tr><th>제제</th><th>GC-AI 빈도</th><th>위험 증가 요인</th><th>위험 감소 전략</th></tr>
+        <tr>
+          <td>흡입 GC</td>
+          <td>전체 7.8%<br>고용량 21.5%<br>&gt;12개월 27.4%</td>
+          <td>고용량 장기 사용, fluticasone propionate, 타 GC 동시 사용, 낮은 BMI, 높은 순응도, CYP3A4 억제제</td>
+          <td>최소 유효 용량, 스페이서·구강 헹굼, fluticasone 대안 고려, CYP3A4 억제제 병용 회피</td>
+        </tr>
+        <tr>
+          <td>관절강내 주사</td>
+          <td>52.2%</td>
+          <td>단기간 복수 주사, 동시 복수 관절, 고용량, 염증성 관절병증, 타 GC 동시 사용, CYP3A4 억제제</td>
+          <td>주사 최소화, 간격 ≥3–4개월, triamcinolone hexacetonide 고려, CYP3A4 억제제 병용 회피</td>
+        </tr>
+        <tr>
+          <td>국소 GC (피부)</td>
+          <td>4.7%</td>
+          <td>광범위 고역가 제제, 손상 피부·점막·폐쇄 드레싱, 점막·눈꺼풀·음낭 부위, 타 GC 동시 사용</td>
+          <td>최소 유효 용량, 단기 사용, 저역가 제제 우선, CYP3A4 억제제 회피</td>
+        </tr>
+        <tr>
+          <td>비강내 GC</td>
+          <td>4.2%</td>
+          <td>장기 사용, 타 GC 동시 사용, CYP3A4 억제제</td>
+          <td>최소 유효 용량, CYP3A4 억제제 회피</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 2.10 — 외인성 쿠싱증후군 환자 → GC-AI로 간주 (GCP)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-warn"><span>⚠️</span><span>GC 사용/노출 중 외인성 쿠싱증후군 징후를 보이는 환자는 HPA 축이 완전히 억제되어 있다고 간주하고 GC-AI에 준하여 관리한다.</span></div>
+      <p style="font-size:12px;margin-top:8px"><strong>외인성 쿠싱증후군 증상·징후 (Table 7):</strong></p>
+      <div class="grid2" style="margin-top:6px">
+        <div>
+          <p style="font-size:11px;font-weight:600;margin-bottom:4px">증상</p>
+          <ul class="dot">
+            <li>근력 약화 (특히 근위부)</li>
+            <li>수면 장애 (불면증)</li>
+            <li>식욕 증가</li>
+            <li>기분·인지 장애 (과민성, 기억력 저하, 우울)</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:11px;font-weight:600;margin-bottom:4px">징후·기타</p>
+          <ul class="dot">
+            <li>근위부 근위축, 과체중·복부 비만, 쇄골 상·경부 지방 축적</li>
+            <li>얼굴·상부 목 붉은색 피부 및 얼굴 둥글어짐</li>
+            <li>피부 위축, 쉬운 멍, 붉은 선조, 상처 치유 저하</li>
+            <li>여드름, 여성 생리 불규칙</li>
+            <li>고혈압, 고혈당, 이상지질혈증, 과응고성, 골다공증·취약성 골절, 성선기능저하증</li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-info" style="margin-top:8px"><span>ℹ️</span><span>외인성 쿠싱 양상이 생리 용량으로 감량 후 수개월까지 지속될 수 있다. 조조 코르티솔로 AI 확인 및 HPA 회복 추적 가능.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CRISIS ═══ -->
+<div id="tab-crisis" class="panel">
+  <div class="alert alert-danger"><span>🚨</span><span>권고문 3: GC-AI 환자의 부신위기 진단 및 치료</span></div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>🚨 부신위기 진단 기준 및 촉발 인자 (Table 9)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="grid2">
+        <div>
+          <div class="alert alert-danger"><span>🆘</span><span><strong>임상 진단 기준:</strong><br>저혈압 또는 저혈량성 쇼크<br>+ 아래 중 1가지 이상:</span></div>
+          <ul class="dot">
+            <li>오심 또는 구토</li>
+            <li>심한 피로</li>
+            <li>발열</li>
+            <li>의식 장애 (기면·혼동·졸음·허탈·섬망·혼수·경련 포함)</li>
+          </ul>
+          <p style="font-size:11px;color:var(--text2);margin-top:6px">가능한 검사 이상 소견 (진단 필수 아님):<br>저나트륨혈증, 고칼륨혈증, 탈수 소견 (BUN·Cr 상승), 저혈당, 림프구 증가증, 호산구증가증</p>
+        </div>
+        <div>
+          <p style="font-size:12px;font-weight:600;margin-bottom:6px">촉발 인자</p>
+          <p style="font-size:11.5px;font-weight:600;margin-bottom:4px">모든 부신부전 공통:</p>
+          <ul class="dot">
+            <li>감염 (위장관·비뇨기·호흡기·패혈증)</li>
+            <li>급성 질환 (발열 포함), 신체 외상</li>
+            <li>수술·마취 (전신·부위·국소)</li>
+            <li>장 처치 (완하제·관장), 출산·분만</li>
+            <li>치과 처치, 심한 스트레스·통증 (불안·사별)</li>
+            <li>격렬한 운동</li>
+          </ul>
+          <p style="font-size:11.5px;font-weight:600;margin:6px 0 4px">GC-AI 특이 촉발 인자:</p>
+          <ul class="dot">
+            <li>장기 치료 중 갑작스러운 GC 중단</li>
+            <li>생리 대체 용량 이하로의 taper</li>
+            <li>흡입 GC 제제·용량 전환 (전신 흡수 변동)</li>
+            <li>강력한 CYP3A4 <em>유도제</em> 시작 (아팔루타마이드·카르바마제핀·엔잘루타마이드·페노바르비탈·페니토인·프리미돈·리팜피신 등) → GC 간 대사 증가</li>
+          </ul>
+        </div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px"><span>⚠️</span><span>부신위기는 임상 진단이다 — 검사 결과 대기 전에 치료를 시작해야 한다. 쇼크가 유발 인자의 중증도에 비해 불균형적으로 심할 경우 의심. 부신위기가 GC-AI의 첫 임상 발현일 수 있다.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 3.2 — 부신위기 즉각 치료 (GCP)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="flow-box" style="border-left:3px solid var(--red);background:#fff5f5">
+        <strong>🚨 Step 1: 즉각 치료 시작</strong><br>
+        <span style="color:var(--red)">하이드로코르티손 100 mg IV 또는 IM 즉시 주사</span>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--orange)">
+        <strong>💧 Step 2: 수액 소생술 동시 진행</strong><br>
+        0.9% 생리식염수 (또는 동등 용액) 정주 — 개별 환자 필요도·동반질환에 따라 조절
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--yellow)">
+        <strong>💊 Step 3: 지속적 GC 투여</strong><br>
+        하이드로코르티손 200 mg/24시간 지속 정주 (권장) 또는 50 mg IV/IM 6시간마다<br>
+        임상 회복 및 내분비 전문의 지도까지 유지
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-box" style="border-left:3px solid var(--green)">
+        <strong>🔍 Step 4: 촉발 인자 확인 및 치료</strong><br>
+        감염·외상 등 촉발 인자 치료. 단기 고용량 GC 투여는 안전하므로 나중에 부신위기 진단이 부정되더라도 우선 치료.
+      </div>
+      <div class="alert alert-info" style="margin-top:8px"><span>ℹ️</span><span>GC-AI는 알도스테론 분비가 보존되므로 1차 부신부전에 비해 부신위기 발생률이 낮고, 미네랄로코르티코이드 결핍에 의한 전해질 이상이 덜하다. 그러나 GC-AI는 종종 미진단 상태이므로 주의 요망.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STRESS DOSE ═══ -->
+<div id="tab-stressdose" class="panel">
+  <div class="alert alert-teal"><span>💉</span><span>권고문 3.1: GC-AI 환자 또는 GC-AI 위험 환자의 스트레스 용량 투여</span></div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>R 3.1 — 스트레스 시 GC 커버 원칙 (GCP)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-warn"><span>⚠️</span><span><strong>권고:</strong> 생화학 검사로 GC-AI가 배제되지 않은 현재 또는 최근 GC 사용자는 스트레스에 노출될 때 스트레스 용량 커버를 제공해야 한다. GC 중단 후에도 해당.</span></div>
+      <div class="grid2" style="margin-top:8px">
+        <div>
+          <div class="alert alert-success"><span>💊</span><span><strong>경증 스트레스 → 경구 GC</strong><br>혈역학적 불안정 없음, 구토·설사 없음</span></div>
+        </div>
+        <div>
+          <div class="alert alert-danger"><span>💉</span><span><strong>중등~중증 스트레스 → 비경구 GC</strong><br>전신/부위 마취, 장기 금식, 혈역학 불안정, 구토·설사</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>💉 스트레스 유형별 GC 투여 지침 (Table 8)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)"><span>💛 경증 스트레스 — 입원 불필요한 발열성 질환, 항생제 경구 치료, 국소마취 시술</span><span>▾</span></div>
+        <div class="acc-body">
+          <table class="tc-table">
+            <tr><th>현재 GC 용량</th><th>조치</th></tr>
+            <tr><td>GC 미복용</td><td>HC 40 mg/일 (20 mg 기상 시 + 10 mg 정오 + 10 mg 17시), 2–5일간</td></tr>
+            <tr><td>HC &lt;40 mg/일</td><td>HC 40 mg/일로 증량, 3분할, 2–5일간 (또는 항생제 투여 기간까지)</td></tr>
+            <tr><td>Prednisone &lt;10 mg/일</td><td>Prednisone 10 mg/일로 증량, 1–2회 분할, 2–5일간</td></tr>
+            <tr><td>Dexamethasone &lt;1 mg/일</td><td>Dexamethasone 1 mg/일로 증량, 2–5일간</td></tr>
+          </table>
+          <div class="alert alert-info" style="margin-top:6px"><span>ℹ️</span><span>이미 HC ≥40 mg/일, prednisone ≥10 mg/일, dexamethasone ≥1 mg/일 복용 중이면 혈역학 불안정 없는 한 증량 불필요.</span></div>
+        </div>
+      </div>
+
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)"><span>💛 경증 스트레스 — 국소마취 소수술·장 처치 (전신마취 불필요)</span><span>▾</span></div>
+        <div class="acc-body">
+          <table class="tc-table">
+            <tr><th>현재 GC 용량</th><th>조치</th></tr>
+            <tr><td>GC 미복용</td><td>HC 40 mg/일 3분할 (20 mg 시술 1시간 전 + 10 mg 6시간 후 + 10 mg 6시간 후)</td></tr>
+            <tr><td>HC &lt;40 mg/일</td><td>위와 같이 40 mg/일 3분할. 시술 후 불량하면 임상 안정까지 증량 용량 유지</td></tr>
+            <tr><td>Prednisone &lt;10 mg/일</td><td>시술 1시간 전 prednisone 10 mg. 불량하면 증량 용량 유지</td></tr>
+            <tr><td>Dexamethasone &lt;1 mg/일</td><td>시술 1시간 전 dexamethasone 1 mg. 불량하면 증량 용량 유지</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="acc">
+        <div class="acc-hdr" onclick="toggleAcc(this)"><span>🔴 중등~중증 스트레스 — 입원 필요 중증 질환, 전신·부위마취 수술, 구토·설사, 분만·제왕절개</span><span>▾</span></div>
+        <div class="acc-body">
+          <div class="alert alert-danger"><span>🚨</span><span>이미 HC ≥200 mg/일, prednisone ≥50 mg/일, dexamethasone ≥6–8 mg/일 투여 중이면 혈역학 불안정 없는 한 증량 불필요. 구토·설사로 흡수 감소 의심 시 비경구로 전환.</span></div>
+          <table class="tc-table" style="margin-top:6px">
+            <tr><th>상황</th><th>처방</th></tr>
+            <tr><td>구토·설사로 외래 치료 가능한 경우</td><td>HC 100 mg IM 즉시 주사, 필요 시 6시간 후 반복. 증상 호전 없거나 혈역학 불안정 시 입원</td></tr>
+            <tr><td>입원이 필요한 중증 질환 (패혈증·외상·수술)</td><td>HC 100 mg IV/IM 즉시 + HC 200 mg/24시간 지속 정주 (불가 시 HC 50 mg IV 6시간마다). 용량·기간은 임상 경과에 따라 개별화</td></tr>
+            <tr><td><strong>전신·부위마취 수술 (단기 회복)</strong></td><td>마취 유도 시 HC 100 mg IV + HC 200 mg/24시간 정주.<br>수술 후: 경구 증량 용량 48시간 (HC 40 mg/일 또는 pred 10 mg/일 또는 dex 1 mg/일) → 수술 전 용량으로 복귀</td></tr>
+            <tr><td><strong>전신·부위마취 수술 (장기 회복·금식)</strong></td><td>마취 유도 시 HC 100 mg IV + HC 200 mg/24시간 정주 (금식 중 유지).<br>경구 섭취 가능해지면 48시간 증량 경구 → 수술 전 용량 복귀</td></tr>
+            <tr><td><strong>분만·제왕절개</strong></td><td>진통 시작 시 HC 100 mg IV + HC 200 mg/24시간 정주</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>Fig. 3 — 부신위기 위험 환자 관리 알고리즘</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div style="border:1px solid var(--border);border-radius:8px;padding:12px;background:#fafbfc">
+        <div class="flow-box" style="border-left:3px solid var(--red);background:#fff5f5">
+          <strong>🚨 부신위기 의심 (저혈압·혈역학 불안정)</strong>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box" style="border-left:3px solid var(--red)">HC 100 mg IV/IM + HC 200 mg/24hr 정주<br><em style="font-size:11px">확인된 부신위기에서만 지속 정주</em></div>
+        <div style="height:10px"></div>
+        <div class="flow-box" style="border-left:3px solid var(--orange)">
+          <strong>장기 구토·설사 (혈역학 안정)</strong>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box" style="border-left:3px solid var(--orange)">경구 GC 흡수 감소 → 비경구 GC 고려하여 부신위기 예방</div>
+        <div style="height:10px"></div>
+        <div class="flow-box" style="border-left:3px solid var(--yellow)">
+          <strong>중등~중증 스트레스 (전신마취 수술·분만·입원 치료·장기간 금식 필요 시술)</strong>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box" style="border-left:3px solid var(--yellow)">스트레스 해소까지 비경구 GC 유지 (Table 8 참조)</div>
+        <div style="height:10px"></div>
+        <div class="flow-box" style="border-left:3px solid var(--green)">
+          <strong>경증 스트레스 (발열성 질환, 항생제 치료, 국소마취 시술)</strong>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box" style="border-left:3px solid var(--green)">이미 prednisone ≥10 mg/일 복용 중이면 추가 불필요. 미복용이면 경구 GC 추가 (Table 8 참조)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TABLES ═══ -->
+<div id="tab-tables" class="panel">
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>📊 GC-AI 위험 인자 (Table 3)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <table class="tc-table">
+        <tr><th>위험 인자</th><th style="color:var(--green)">낮음</th><th style="color:var(--yellow)">중등</th><th style="color:var(--red)">높음</th></tr>
+        <tr>
+          <td>GC 역가</td>
+          <td>하이드로코르티손, 코르티손 아세테이트, 데플라자코르트</td>
+          <td>프레드니손, 프레드니솔론, 메틸프레드니솔론, 트리암시놀론</td>
+          <td>덱사메타손, 베타메타손, 플루티카손</td>
+        </tr>
+        <tr>
+          <td>투여 경로</td>
+          <td>비강내, 국소, 점안</td>
+          <td>흡입</td>
+          <td>전신 (경구·IM·IV), 관절강내, 여러 경로 동시 사용</td>
+        </tr>
+        <tr>
+          <td>용량</td>
+          <td>낮음</td>
+          <td>중등</td>
+          <td>높음</td>
+        </tr>
+        <tr>
+          <td>치료 기간</td>
+          <td>&lt;3–4주</td>
+          <td>3–4주 ~ 3개월</td>
+          <td>&gt;3개월</td>
+        </tr>
+        <tr>
+          <td>BMI</td>
+          <td>정상</td>
+          <td>과체중</td>
+          <td>비만</td>
+        </tr>
+        <tr>
+          <td>연령</td>
+          <td>젊은 성인</td>
+          <td>—</td>
+          <td>노인</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>🔄 전신 GC 중단 접근 알고리즘 (Fig. 2)</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="flow-box" style="border-left:3px solid var(--teal)">
+        초생리용량 GC 사용 환자, GC 치료 불필요 판단 → 생리 대체 용량으로 점감 (덱사메타손 회피)
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="grid2">
+        <div>
+          <div class="flow-box" style="border-left:3px solid var(--green)">
+            <strong>시나리오 1: 생화학 확인 불필요/불가</strong><br>
+            점진적 taper 지속 + 부신부전/GC 금단증후군 임상 증상 모니터링<br>
+            임상 우려 시: 시나리오 2로 전환 또는 일시 용량 증량 후 더 느리게 taper
+          </div>
+        </div>
+        <div>
+          <div class="flow-box" style="border-left:3px solid var(--accent2)">
+            <strong>시나리오 2: 생화학 확인 가능/선호</strong><br>
+            마지막 GC 투여 24시간 후 조조 혈청 코르티솔 측정<br>
+            → Fig. 2 / R 2.7 기준에 따라 판단
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:8px">
+        <span>⚠️</span>
+        <span><strong>중요 고려 사항:</strong><br>
+        • 제안된 코르티솔 cut-off는 assay·기관 프로토콜에 따라 다를 수 있음<br>
+        • 주요 스트레스 (패혈증·수술·외상·입원 필요 급성 질환) 중인 환자에게는 cut-off 적용 불가<br>
+        • 비정상 CBG·알부민 환자 (경구 에스트로겐·임신·간경화·신증후군)에게도 cut-off 적용 불가<br>
+        • &gt;300 nmol/L 환자 중 일부는 수년간 초생리용량 GC를 투여받은 경우 점진적 taper 필요
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header open" onclick="toggleCard(this)">
+      <span>🔮 미래 연구 방향</span><span class="toggle">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="dot">
+        <li>GC-AI의 진정한 부신위기 임상 위험도 정의를 위한 역학 연구 (현재 대부분 생화학 진단 기반)</li>
+        <li>유전적 소인·환경 요인·동반 질환·병용 약물 등 GC-AI 발생·취약성 위험 인자 정의</li>
+        <li>GC 금단증후군 생화학 마커 또는 임상 채점 도구 개발 (GC-AI와 감별 목적)</li>
+        <li>타액 코르티손·간질액 코르티솔 지속 모니터링 등 더 특이적·예측력 높은 검사법 개발</li>
+        <li>HPA 축에 덜 영향을 주면서 항염·면역억제 효과를 보존하는 새로운 GC 또는 동반 HPA 자극 전략 연구</li>
+        <li>코르티솔 assay 표준화 — 면역측정법과 LC-MS/MS 기준치 통일</li>
+        <li>표준화된 환자 교육 프로그램 및 응급 카드 사용의 임상 결과 개선 증거 확립</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleCard(el){
+  el.classList.toggle('open');
+  const body=el.nextElementSibling;
+  body.classList.toggle('collapsed');
+}
+function toggleAcc(el){
+  const body=el.nextElementSibling;
+  body.style.display=body.style.display==='block'?'none':'block';
+  el.querySelector('span:last-child').textContent=body.style.display==='block'?'▴':'▾';
+}
+
+const abbrs=[
+  ['GC-AI','Glucocorticoid-induced Adrenal Insufficiency (글루코코르티코이드 유발 부신부전) — 외인성 GC 투여로 인한 HPA 축 억제에 의한 부신피질기능저하증.'],
+  ['HPA','Hypothalamic-Pituitary-Adrenal axis (시상하부-뇌하수체-부신 축) — CRH→ACTH→코르티솔로 이어지는 스트레스 반응 조절 축.'],
+  ['GC','Glucocorticoid (글루코코르티코이드) — 항염·면역억제 목적 스테로이드. 경구·흡입·관절강내·국소·비강내 등 다양한 경로로 투여.'],
+  ['CRH','Corticotropin-Releasing Hormone (코르티코트로핀 방출 호르몬) — 시상하부에서 분비. ACTH 분비를 자극.'],
+  ['ACTH','Adrenocorticotropic Hormone (부신피질자극호르몬) — 뇌하수체 전엽에서 분비. 부신피질에서 코르티솔 생산을 자극.'],
+  ['HC','Hydrocortisone (하이드로코르티손) — 코르티솔과 동일. 부신부전 표준 대체 제제. 20 mg이 생리 일일 등가 용량.'],
+  ['ICS','Inhaled Corticosteroid (흡입 코르티코스테로이드) — 천식·COPD 치료. 고용량 장기 사용 시 GC-AI 위험.'],
+  ['CYP3A4','Cytochrome P450 3A4 — 대부분의 GC를 간에서 대사하는 효소. 강력한 억제제 병용 시 GC 혈중 농도 상승 → HPA 억제 위험 증가.'],
+  ['Prednisone','프레드니손 — 대표적인 중기작용 경구 GC. 5 mg이 생리 일일 등가 용량. 4.0의 상대 역가.'],
+  ['Prednisolone','프레드니솔론 — 프레드니손의 활성형. 프레드니손과 동등하게 사용.'],
+  ['Dexamethasone','덱사메타손 — 장기작용·고역가 GC (역가 30–60). 생리 등가 용량 0.5 mg. HPA 억제 위험 가장 높음. 가능하면 단기 사용.'],
+  ['DHEAS','Dehydroepiandrosterone Sulfate (황산 데하이드로에피안드로스테론) — 부신 안드로겐. GC-AI에서 코르티솔보다 늦게 회복 → HPA 회복 감지에 덜 유용.'],
+  ['CBG','Cortisol-Binding Globulin (코르티솔 결합 글로불린) — 혈청 코르티솔의 90% 결합 담체. 경구 에스트로겐·임신 시 증가 (코르티솔 위양성↑); 저알부민혈증 시 감소 (코르티솔 위음성↑).'],
+  ['LC-MS/MS','Liquid Chromatography Tandem Mass Spectrometry — 코르티솔 측정의 가장 정확한 방법. 면역측정법보다 특이도 높음.'],
+  ['GCP','Good Clinical Practice — 근거 기반이 아닌 전문가 임상 경험에 기반한 권고. GRADE 공식 등급 없음.'],
+  ['GRADE','Grading of Recommendations Assessment Development and Evaluation — 근거 수준 및 권고 강도 등급화 방법론.'],
+  ['ESE','European Society of Endocrinology (유럽내분비학회) — 본 지침의 공동 발행 학회.'],
+  ['ITT','Insulin Tolerance Test (인슐린 내성 검사) — 저혈당 유발로 전체 HPA 축을 평가하는 동적 검사. 부작용 위험 있어 경험 있는 기관에서만 시행.'],
+  ['Fluticasone','플루티카손 프로피오네이트 — ICS 중 증상성 GC-AI·외인성 쿠싱증후군에 가장 빈번히 연관된 제제. 긴 반감기(14.4시간)와 높은 GC 수용체 결합력(덱사메타손 대비 18배).'],
+  ['Ritonavir','리토나비르 — HIV/C형간염/COVID-19 항바이러스 복합제에 포함된 대표적 강력 CYP3A4 억제제. GC와 병용 시 외인성 쿠싱증후군 및 GC-AI 위험 현저히 증가.'],
+  ['ARR','Adrenal Recovery Rate — GC 중단 후 HPA 축 회복률. 개인차 매우 크며 수개월~4년 소요 가능.'],
+  ['TOASST','Taper Or Abrupt Steroid STop — Prednisone 7.5 mg 도달 후 점진적 taper vs 즉각 중단을 비교하는 진행 중인 무작위 대조 연구.'],
+];
+
+function buildAbbr(){
+  const sorted=abbrs.slice().sort((a,b)=>a[0].localeCompare(b[0]));
+  document.getElementById('abbr-grid-drop').innerHTML=sorted.map(a=>
+    `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:6px 10px;margin-bottom:4px;" data-term="${a[0].toLowerCase()}" data-def="${a[1].toLowerCase()}">
+       <span style="font-weight:700;color:var(--teal);font-size:12px;font-family:'Courier New',monospace">${a[0]}</span>
+       <div style="font-size:11px;color:var(--text2);line-height:1.45;margin-top:2px">${a[1]}</div>
+     </div>`).join('');
+}
+function filterAbbr(val){
+  const v=val.toLowerCase().trim();
+  const drop=document.getElementById('abbr-dropdown');
+  const items=document.querySelectorAll('#abbr-grid-drop [data-term]');
+  if(!v){drop.style.display='none';return;}
+  const inp=document.getElementById('abbr-input');
+  const rect=inp.getBoundingClientRect();
+  const w=440;
+  let left=rect.right-w;if(left<8)left=8;
+  drop.style.top=(rect.bottom+4)+'px';drop.style.left=left+'px';
+  drop.style.display='block';
+  items.forEach(el=>{
+    const show=el.dataset.term.startsWith(v)||el.dataset.def.includes(v);
+    el.style.display=show?'':'none';
+  });
+}
+document.addEventListener('click',e=>{
+  const inp=document.getElementById('abbr-input');
+  const drop=document.getElementById('abbr-dropdown');
+  if(inp&&!inp.contains(e.target)&&drop&&!drop.contains(e.target))drop.style.display='none';
+});
+buildAbbr();
+</script>
+</body>
+</html>
