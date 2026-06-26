@@ -9,18 +9,21 @@
     --bg:#f6f8fa;--surface:#fff;--surface2:#f0f2f5;--border:#d0d7de;
     --accent:#0969da;--accent2:#0550ae;--green:#1a7f37;--yellow:#9a6700;
     --red:#cf222e;--orange:#bc4c00;--text:#1f2328;--text2:#57606a;
-    --teal:#0a7c8a;--purple:#5a3ea0;
+    --teal:#0a7c8a;--purple:#5a3ea0;--fscale:1;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;}
+  body{font-family:'Pretendard','Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size: calc(13px * var(--fscale, 1));line-height:1.5;}
   header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;position:sticky;top:0;z-index:100;}
   .header-inner{width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:4px;}
-  .logo-badge{background:var(--teal);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
-  .logo-badge2{background:var(--purple);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
+  .logo-badge{background:var(--teal);color:#fff;font-size: calc(10px * var(--fscale, 1));font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
+  .logo-badge2{background:var(--purple);color:#fff;font-size: calc(10px * var(--fscale, 1));font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.5px;}
   .tab-bar{display:flex;justify-content:center;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
   .tab-bar::-webkit-scrollbar{display:none;}
+  .font-zoom-btn{display:flex;align-items:center;gap:3px;flex-shrink:0;margin:4px 4px 4px 6px;padding:5px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--accent2);font-size:calc(11px * var(--fscale, 1));font-weight:700;cursor:pointer;user-select:none;white-space:nowrap;transition:background .15s;}
+  .font-zoom-btn:hover{background:var(--border);}
+  .font-zoom-btn .fz-icon{font-size:calc(12px * var(--fscale, 1));}
   .tab-bar-inner{width:100%;max-width:960px;display:flex;align-items:center;gap:2px;padding:0 4px;}
-  .tab{padding:7px 11px;font-size:11.5px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;user-select:none;flex-shrink:0;}
+  .tab{padding:7px 11px;font-size: calc(11.5px * var(--fscale, 1));color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;user-select:none;flex-shrink:0;}
   .tab:hover{color:var(--text);}
   .tab.active{color:var(--teal);border-bottom-color:var(--teal);}
   .tab-abbr-wrap{display:flex;align-items:center;padding:4px 4px;margin-left:4px;flex-shrink:0;position:relative;}
@@ -31,21 +34,21 @@
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
   @media(max-width:680px){.grid2,.grid3{grid-template-columns:1fr;}}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:10px;}
-  .card-header{background:var(--surface2);padding:8px 12px;font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
-  .card-header .toggle{font-size:13px;transition:transform .2s;}
+  .card-header{background:var(--surface2);padding:8px 12px;font-size: calc(12px * var(--fscale, 1));font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+  .card-header .toggle{font-size: calc(13px * var(--fscale, 1));transition:transform .2s;}
   .card-header.open .toggle{transform:rotate(180deg);}
   .card-body{padding:10px 12px;}
   .card-body.collapsed{display:none;}
   .stat-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
   .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px 14px;flex:1;min-width:90px;text-align:center;}
-  .stat-val{font-size:18px;font-weight:700;color:var(--teal);}
-  .stat-lbl{font-size:10px;color:var(--text2);margin-top:2px;}
+  .stat-val{font-size: calc(18px * var(--fscale, 1));font-weight:700;color:var(--teal);}
+  .stat-lbl{font-size: calc(10px * var(--fscale, 1));color:var(--text2);margin-top:2px;}
   .rec-list{list-style:none;}
   .rec-item{padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start;}
   .rec-item:last-child{border-bottom:none;}
-  .rec-text{font-size:12px;color:var(--text);line-height:1.65;}
+  .rec-text{font-size: calc(12px * var(--fscale, 1));color:var(--text);line-height:1.65;}
   .rec-text strong{color:#1f2328;}
-  .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:1px;}
+  .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size: calc(10px * var(--fscale, 1));font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:1px;}
   .badge-strong{background:#dafbe1;color:#116329;border:1px solid #1a7f37;}
   .badge-weak{background:#fff8c5;color:#7a4b00;border:1px solid #d4a017;}
   .badge-gcp{background:#e0f5f5;color:#075050;border:1px solid var(--teal);}
@@ -53,27 +56,27 @@
   .badge-low{background:#fff8c5;color:#7a4b00;border:1px solid #d4a017;}
   .badge-mod{background:#ddf4ff;color:var(--accent2);border:1px solid var(--accent2);}
   .badge-high{background:#dafbe1;color:#116329;border:1px solid #1a7f37;}
-  .alert{padding:8px 12px;border-radius:6px;font-size:12px;margin:8px 0;display:flex;gap:8px;align-items:flex-start;}
+  .alert{padding:8px 12px;border-radius:6px;font-size: calc(12px * var(--fscale, 1));margin:8px 0;display:flex;gap:8px;align-items:flex-start;}
   .alert-info{background:#ddf4ff;border-left:3px solid var(--accent2);color:#0550ae;}
   .alert-warn{background:#fff8c5;border-left:3px solid #d4a017;color:#7a4b00;}
   .alert-danger{background:#ffebe9;border-left:3px solid var(--red);color:#82071e;}
   .alert-success{background:#dafbe1;border-left:3px solid var(--green);color:#116329;}
   .alert-teal{background:#e0f5f5;border-left:3px solid var(--teal);color:#075050;}
   .alert-purple{background:#f3e5f5;border-left:3px solid var(--purple);color:#5a3ea0;}
-  .tc-table{width:100%;border-collapse:collapse;font-size:11.5px;}
-  .tc-table th{background:var(--surface2);color:var(--text2);padding:5px 8px;font-size:10.5px;text-transform:uppercase;letter-spacing:.3px;font-weight:600;text-align:left;border-bottom:1px solid var(--border);}
+  .tc-table{width:100%;border-collapse:collapse;font-size: calc(11.5px * var(--fscale, 1));}
+  .tc-table th{background:var(--surface2);color:var(--text2);padding:5px 8px;font-size: calc(10.5px * var(--fscale, 1));text-transform:uppercase;letter-spacing:.3px;font-weight:600;text-align:left;border-bottom:1px solid var(--border);}
   .tc-table td{padding:5px 8px;border-bottom:1px solid var(--border);vertical-align:top;}
   .tc-table tr:last-child td{border-bottom:none;}
   .tc-table tr:hover td{background:rgba(0,0,0,.02);}
   .acc{border:1px solid var(--border);border-radius:6px;margin-bottom:6px;overflow:hidden;}
-  .acc-hdr{background:var(--surface2);padding:7px 12px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+  .acc-hdr{background:var(--surface2);padding:7px 12px;font-size: calc(12px * var(--fscale, 1));font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
   .acc-hdr:hover{background:#e8eaec;}
-  .acc-body{display:none;padding:10px 12px;font-size:12px;line-height:1.65;}
-  .flow-box{border:1px solid var(--border);border-radius:6px;background:var(--surface);padding:8px 12px;margin-bottom:6px;font-size:12px;line-height:1.6;}
-  .flow-arrow{text-align:center;color:var(--text2);font-size:14px;margin:2px 0;}
-  .step-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:10px;font-weight:700;flex-shrink:0;margin-right:6px;}
-  .tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;}
-  .cortisol-bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin:8px 0;font-size:11px;font-weight:700;}
+  .acc-body{display:none;padding:10px 12px;font-size: calc(12px * var(--fscale, 1));line-height:1.65;}
+  .flow-box{border:1px solid var(--border);border-radius:6px;background:var(--surface);padding:8px 12px;margin-bottom:6px;font-size: calc(12px * var(--fscale, 1));line-height:1.6;}
+  .flow-arrow{text-align:center;color:var(--text2);font-size: calc(14px * var(--fscale, 1));margin:2px 0;}
+  .step-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size: calc(10px * var(--fscale, 1));font-weight:700;flex-shrink:0;margin-right:6px;}
+  .tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size: calc(10px * var(--fscale, 1));font-weight:700;}
+  .cortisol-bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin:8px 0;font-size: calc(11px * var(--fscale, 1));font-weight:700;}
   .cortisol-red{background:#ffebe9;color:#82071e;flex:1.5;display:flex;align-items:center;justify-content:center;border:1px solid #f1a7a7;}
   .cortisol-yellow{background:#fff8c5;color:#7a4b00;flex:1;display:flex;align-items:center;justify-content:center;border:1px solid #e6c87a;}
   .cortisol-green{background:#dafbe1;color:#116329;flex:1;display:flex;align-items:center;justify-content:center;border:1px solid #8fd4a4;}
@@ -81,9 +84,9 @@
   ::-webkit-scrollbar-track{background:var(--bg);}
   ::-webkit-scrollbar-thumb{background:#c8d0d9;border-radius:3px;}
   ul.dot{padding-left:18px;}
-  ul.dot li{margin-bottom:3px;font-size:12px;line-height:1.6;}
+  ul.dot li{margin-bottom:3px;font-size: calc(12px * var(--fscale, 1));line-height:1.6;}
   ol.num{padding-left:18px;}
-  ol.num li{margin-bottom:3px;font-size:12px;line-height:1.6;}
+  ol.num li{margin-bottom:3px;font-size: calc(12px * var(--fscale, 1));line-height:1.6;}
 </style>
 </head>
 <body>
@@ -96,15 +99,16 @@
       <h1 style="font-size:16px;font-weight:700;color:var(--text)">글루코코르티코이드 유발 부신부전 진료지침</h1>
     </div>
     <div style="text-align:center;line-height:1.5">
-      <span style="color:var(--text2);font-size:11px">Diagnosis and Therapy of Glucocorticoid-induced Adrenal Insufficiency — ESE/ES Joint Clinical Guideline</span><br>
-      <span style="font-size:10px;color:var(--text2)">Beuschlein F, Else T, et al. · J Clin Endocrinol Metab 2024;109:1657–1683 · doi: 10.1210/clinem/dgae250</span><br>
-      <span style="font-size:10px;color:var(--text2);font-style:italic">This tool is not officially endorsed by ESE or any affiliated organization. For clinical use only as a reference aid.</span>
+      <span style="color:var(--text2);font-size: calc(11px * var(--fscale, 1))">Diagnosis and Therapy of Glucocorticoid-induced Adrenal Insufficiency — ESE/ES Joint Clinical Guideline</span><br>
+      <span style="font-size: calc(10px * var(--fscale, 1));color:var(--text2)">Beuschlein F, Else T, et al. · J Clin Endocrinol Metab 2024;109:1657–1683 · doi: 10.1210/clinem/dgae250</span><br>
+      <span style="font-size: calc(10px * var(--fscale, 1));color:var(--text2);font-style:italic">This tool is not officially endorsed by ESE or any affiliated organization. For clinical use only as a reference aid.</span>
     </div>
   </div>
 </header>
 
 <div class="tab-bar">
   <div class="tab-bar-inner">
+    <div id="font-zoom-btn" class="font-zoom-btn" onclick="cycleFontZoom()"><span class="fz-icon">🔠</span><span id="font-zoom-label">100%</span></div>
     <div class="tab active" onclick="showTab('overview')">🏠 개요</div>
     <div class="tab" onclick="showTab('epidemiology')">📊 역학·병태</div>
     <div class="tab" onclick="showTab('definitions')">📖 정의</div>
@@ -117,9 +121,9 @@
     <div class="tab" onclick="showTab('tables')">📁 참조표</div>
     <div class="tab-abbr-wrap">
       <div style="position:relative;display:flex;align-items:center;flex-shrink:0">
-        <span style="position:absolute;left:8px;color:var(--text2);font-size:12px;pointer-events:none">🔍</span>
+        <span style="position:absolute;left:8px;color:var(--text2);font-size: calc(12px * var(--fscale, 1));pointer-events:none">🔍</span>
         <input id="abbr-input" type="text" placeholder="약어" oninput="filterAbbr(this.value)"
-          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size:12px;width:90px;outline:none;"
+          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size: calc(12px * var(--fscale, 1));width:90px;outline:none;"
           onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
       </div>
       <div id="abbr-dropdown" style="display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;width:440px;max-height:360px;overflow-y:auto;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.12)">
@@ -147,17 +151,17 @@
     <div class="card-body">
       <div class="flow-box" style="border-left:3px solid var(--teal)">
         <strong>① GC 사용 여부·기간·용량 확인</strong><br>
-        <span style="color:var(--text2);font-size:11px">3–4주 미만 단기 사용 → HPA 억제 위험 낮음, taper 불필요</span>
+        <span style="color:var(--text2);font-size: calc(11px * var(--fscale, 1))">3–4주 미만 단기 사용 → HPA 억제 위험 낮음, taper 불필요</span>
       </div>
       <div class="flow-arrow">↓</div>
       <div class="flow-box" style="border-left:3px solid var(--accent2)">
         <strong>② 원발 질환 조절 여부 확인</strong><br>
-        <span style="color:var(--text2);font-size:11px">질환이 조절되었을 때만 taper 시작 — 초생리용량에서 생리용량으로 점감 (prednisone 4–6 mg 목표)</span>
+        <span style="color:var(--text2);font-size: calc(11px * var(--fscale, 1))">질환이 조절되었을 때만 taper 시작 — 초생리용량에서 생리용량으로 점감 (prednisone 4–6 mg 목표)</span>
       </div>
       <div class="flow-arrow">↓</div>
       <div class="flow-box" style="border-left:3px solid var(--yellow)">
         <strong>③ 생리용량 도달 후 — 두 가지 전략 중 선택</strong><br>
-        <span style="font-size:11.5px;color:var(--text)">A. 임상 증상 모니터링하며 점진적 taper 지속<br>B. 조조 혈청 코르티솔 측정</span>
+        <span style="font-size: calc(11.5px * var(--fscale, 1));color:var(--text)">A. 임상 증상 모니터링하며 점진적 taper 지속<br>B. 조조 혈청 코르티솔 측정</span>
       </div>
       <div class="flow-arrow">↓</div>
       <div class="flow-box" style="border-left:3px solid var(--green)">
@@ -171,7 +175,7 @@
       <div class="flow-arrow">↓</div>
       <div class="flow-box" style="border-left:3px solid var(--orange)">
         <strong>⑤ GC-AI 확인 시 환자 교육·스트레스 용량 지도</strong><br>
-        <span style="color:var(--text2);font-size:11px">부신위기 예방 교육, 스테로이드 응급 카드, 비경구 하이드로코르티손 자가주사 교육</span>
+        <span style="color:var(--text2);font-size: calc(11px * var(--fscale, 1))">부신위기 예방 교육, 스테로이드 응급 카드, 비경구 하이드로코르티손 자가주사 교육</span>
       </div>
     </div>
   </div>
@@ -256,7 +260,7 @@
             <tr><td>흡입 (&gt;1년)</td><td>27.4% (17.7–39.8%)</td></tr>
             <tr><td>피부 (도포)</td><td>4.7% (1.1–18.5%)</td></tr>
           </table>
-          <div style="font-size:10.5px;color:var(--text2);margin-top:4px">※ 생화학적 GC-AI의 90%는 무증상 — 임상적 관련성과 불일치</div>
+          <div style="font-size: calc(10.5px * var(--fscale, 1));color:var(--text2);margin-top:4px">※ 생화학적 GC-AI의 90%는 무증상 — 임상적 관련성과 불일치</div>
         </div>
       </div>
     </div>
@@ -313,7 +317,7 @@
         <tr><th>용어</th><th>정의</th></tr>
         <tr>
           <td><strong>생리적 일일 등가 용량<br>(Physiologic daily dose equivalent)</strong></td>
-          <td>내인성 코르티솔 생산량에 상당하는 GC 용량<br>하이드로코르티손 15–25 mg / 프레드니손 4–6 mg / 메틸프레드니솔론 3–5 mg / 덱사메타손 0.25–0.5 mg<br><span style="color:var(--text2);font-size:11px">※ 내인성 코르티솔 생산량: 약 9–10 mg/일 (생체이용률 고려 위 수치 사용)</span></td>
+          <td>내인성 코르티솔 생산량에 상당하는 GC 용량<br>하이드로코르티손 15–25 mg / 프레드니손 4–6 mg / 메틸프레드니솔론 3–5 mg / 덱사메타손 0.25–0.5 mg<br><span style="color:var(--text2);font-size: calc(11px * var(--fscale, 1))">※ 내인성 코르티솔 생산량: 약 9–10 mg/일 (생체이용률 고려 위 수치 사용)</span></td>
         </tr>
         <tr>
           <td><strong>초생리용량 GC<br>(Supraphysiologic)</strong></td>
@@ -347,20 +351,20 @@
       <table class="tc-table">
         <tr><th>제제</th><th>등가 용량</th><th>GC 역가 (상대)</th><th>혈장 반감기</th><th>생물학적 반감기</th><th>주요 적응</th></tr>
         <tr style="background:#e0f5f5">
-          <td colspan="6" style="font-weight:700;font-size:11px;color:var(--teal)">단기작용 — 낮은 역가</td>
+          <td colspan="6" style="font-weight:700;font-size: calc(11px * var(--fscale, 1));color:var(--teal)">단기작용 — 낮은 역가</td>
         </tr>
         <tr><td>하이드로코르티손</td><td>20 mg</td><td>1.0</td><td>90–120분</td><td>8–12시간</td><td>부신부전 대체</td></tr>
         <tr><td>코르티손 아세테이트</td><td>25 mg</td><td>0.8</td><td>80–120분</td><td>8–12시간</td><td>부신부전 대체</td></tr>
         <tr><td>데플라자코르트</td><td>7.5 mg</td><td>1.0</td><td>70–120분</td><td>미정의</td><td>Duchenne 근디스트로피</td></tr>
         <tr style="background:#fff8c5">
-          <td colspan="6" style="font-weight:700;font-size:11px;color:var(--yellow)">중기작용 — 중등 역가</td>
+          <td colspan="6" style="font-weight:700;font-size: calc(11px * var(--fscale, 1));color:var(--yellow)">중기작용 — 중등 역가</td>
         </tr>
         <tr><td>프레드니손</td><td>5 mg</td><td>4.0</td><td>60분</td><td>12–36시간</td><td>항염·면역억제, 부신부전</td></tr>
         <tr><td>프레드니솔론</td><td>5 mg</td><td>4.0</td><td>115–200분</td><td>12–36시간</td><td>항염·면역억제, 부신부전</td></tr>
         <tr><td>메틸프레드니솔론</td><td>4 mg</td><td>5.0</td><td>180분</td><td>12–36시간</td><td>항염·면역억제</td></tr>
         <tr><td>트리암시놀론</td><td>4 mg</td><td>5.0</td><td>30분</td><td>12–36시간</td><td>항염·면역억제</td></tr>
         <tr style="background:#ffebe9">
-          <td colspan="6" style="font-weight:700;font-size:11px;color:var(--red)">장기작용 — 가장 높은 역가 ⚠️ HPA 억제 위험 최고</td>
+          <td colspan="6" style="font-weight:700;font-size: calc(11px * var(--fscale, 1));color:var(--red)">장기작용 — 가장 높은 역가 ⚠️ HPA 억제 위험 최고</td>
         </tr>
         <tr><td><strong>덱사메타손</strong></td><td>0.5 mg</td><td>30–60</td><td>200분</td><td>36–72시간</td><td>항염·면역억제 (급성 중증에서 단기 사용)</td></tr>
         <tr><td><strong>베타메타손</strong></td><td>0.5 mg</td><td>25–40</td><td>300분</td><td>36–72시간</td><td>항염·면역억제 (급성 중증에서 단기 사용)</td></tr>
@@ -432,7 +436,7 @@
     </div>
     <div class="acc-body">
       <div class="alert alert-success"><span>✅</span><span><strong>권고:</strong> 비내분비 질환으로 GC를 사용하거나 감량 중인 환자는 일반적으로 내분비 전문의 평가가 필요하지 않다.</span></div>
-      <p style="margin-top:8px;font-size:12px;line-height:1.7"><strong>근거:</strong> GC 치료 관리는 처방 의사가 수행해야 할 일반 의학 기술이다. GC-AI 위험에 처한 환자 수(성인의 최소 1%)가 너무 많아 모든 경우에 내분비 전문의 진료를 제공하기 어렵다. 단, 다음 경우에는 내분비 전문의 의뢰를 고려:</p>
+      <p style="margin-top:8px;font-size: calc(12px * var(--fscale, 1));line-height:1.7"><strong>근거:</strong> GC 치료 관리는 처방 의사가 수행해야 할 일반 의학 기술이다. GC-AI 위험에 처한 환자 수(성인의 최소 1%)가 너무 많아 모든 경우에 내분비 전문의 진료를 제공하기 어렵다. 단, 다음 경우에는 내분비 전문의 의뢰를 고려:</p>
       <ul class="dot" style="margin-top:6px">
         <li>생리 용량에서 1년 이상 HPA 미회복 (R 2.11)</li>
         <li>부신위기 병력이 있는 환자 (R 2.11)</li>
@@ -446,7 +450,7 @@
     </div>
     <div class="acc-body">
       <div class="alert alert-teal"><span>🎓</span><span><strong>권고:</strong> GC 치료를 시작하는 임상의는 환자에게 GC 치료의 다양한 내분비적 측면을 교육해야 한다.</span></div>
-      <p style="margin-top:8px;font-size:12px"><strong>교육 내용 (Table 2):</strong></p>
+      <p style="margin-top:8px;font-size: calc(12px * var(--fscale, 1))"><strong>교육 내용 (Table 2):</strong></p>
       <table class="tc-table" style="margin-top:6px">
         <tr><th>교육 항목</th><th>대상 환자</th><th>시기</th></tr>
         <tr><td>외인성 쿠싱증후군 위험 (체중 증가, 근위부 근력 약화, 고혈당, 고혈압, 골다공증 등)</td><td>장기 초생리용량 GC 사용 모든 환자</td><td>치료 시작 시</td></tr>
@@ -485,7 +489,7 @@
     </div>
     <div class="acc-body">
       <div class="alert alert-success"><span>💊</span><span><strong>약권고:</strong> 3–4주 미만 단기 GC 치료 환자는 용량에 관계없이 taper 없이 중단 가능하다. HPA 억제 우려가 낮아 검사 없이 중단할 수 있다.</span></div>
-      <p style="margin-top:8px;font-size:12px;line-height:1.7">단기 치료에서 임상적으로 유의한 HPA 억제가 발생한다는 근거가 없다. 단, 1 µg ACTH 검사에서 억제가 보고된 바 있으나, 이 검사는 250 µg 검사보다 검증이 부족하여 해석에 주의가 필요하다. 단기 GC도 패혈증, 위장관 출혈, 혈전색전증, 골절 등의 부작용은 여전히 발생할 수 있다.</p>
+      <p style="margin-top:8px;font-size: calc(12px * var(--fscale, 1));line-height:1.7">단기 치료에서 임상적으로 유의한 HPA 억제가 발생한다는 근거가 없다. 단, 1 µg ACTH 검사에서 억제가 보고된 바 있으나, 이 검사는 250 µg 검사보다 검증이 부족하여 해석에 주의가 필요하다. 단기 GC도 패혈증, 위장관 출혈, 혈전색전증, 골절 등의 부작용은 여전히 발생할 수 있다.</p>
     </div>
   </div>
 
@@ -495,7 +499,7 @@
     </div>
     <div class="acc-body">
       <div class="alert alert-teal"><span>📉</span><span><strong>권고:</strong> 장기 GC taper는 원발 질환이 조절되고 GC가 더 이상 필요하지 않을 때만 시작한다. 생리 일일 등가 용량 (예: prednisone 4–6 mg)에 도달할 때까지 감량한다.</span></div>
-      <p style="margin-top:8px;font-size:12px"><strong>Taper 속도 가이드 (Table 4):</strong></p>
+      <p style="margin-top:8px;font-size: calc(12px * var(--fscale, 1))"><strong>Taper 속도 가이드 (Table 4):</strong></p>
       <table class="tc-table" style="margin-top:6px">
         <tr><th>현재 prednisone 등가 용량</th><th>감량폭</th><th>간격</th></tr>
         <tr><td>&gt;40 mg/일</td><td>5–10 mg씩 감량</td><td>매 1주</td></tr>
@@ -516,7 +520,7 @@
       <div class="alert alert-warn"><span>⚠️</span><span><strong>권고:</strong> GC taper 중 금단증후군 가능성을 염두에 두어야 한다. 심한 경우 가장 최근에 내성이 있었던 용량으로 일시 증량하고 taper 기간을 늘린다.</span></div>
       <div class="grid2" style="margin-top:8px">
         <div>
-          <p style="font-size:12px;font-weight:600;margin-bottom:4px">금단증후군 특징</p>
+          <p style="font-size: calc(12px * var(--fscale, 1));font-weight:600;margin-bottom:4px">금단증후군 특징</p>
           <ul class="dot">
             <li>Cushing 수술 후 환자의 40–67%에서 발생</li>
             <li>관절통, 근육통, 근력 약화, 피로, 수면 장애, 기분 변화 등 최대 50%</li>
@@ -525,7 +529,7 @@
           </ul>
         </div>
         <div>
-          <p style="font-size:12px;font-weight:600;margin-bottom:4px">감별 및 관리</p>
+          <p style="font-size: calc(12px * var(--fscale, 1));font-weight:600;margin-bottom:4px">감별 및 관리</p>
           <ul class="dot">
             <li>총 GC 용량이 생리 이상이면 부신부전 아님 (원발 질환 재발은 감별 필요)</li>
             <li>느린 taper 속도가 유일한 예방법</li>
@@ -556,7 +560,7 @@
         <div class="alert alert-danger"><span>🚫</span><span>장기작용 GC는 지속적이고 비일주기적인 GC 효과로 인해 HPA 축 회복 자체가 불가능하다.</span></div>
         <div class="alert alert-success"><span>✅</span><span>단기작용 GC (하이드로코르티손·프레드니손)는 아침 투여 시 일주기 리듬을 보존하여 HPA 회복 가능.</span></div>
       </div>
-      <p style="font-size:12px;margin-top:6px">대체 용량 (Table 1 기준): 하이드로코르티손 15–25 mg, 프레드니손 4–6 mg, 메틸프레드니솔론 3–5 mg, 덱사메타손 0.25–0.5 mg이 생리 등가 용량에 해당한다.</p>
+      <p style="font-size: calc(12px * var(--fscale, 1));margin-top:6px">대체 용량 (Table 1 기준): 하이드로코르티손 15–25 mg, 프레드니손 4–6 mg, 메틸프레드니솔론 3–5 mg, 덱사메타손 0.25–0.5 mg이 생리 등가 용량에 해당한다.</p>
     </div>
   </div>
 
@@ -580,7 +584,7 @@
     </div>
     <div class="acc-body">
       <div class="alert alert-success"><span>✅</span><span><strong>권고:</strong> GC-AI 환자에게 플루드로코르티손을 사용하지 않도록 권고한다.</span></div>
-      <p style="margin-top:6px;font-size:12px">근거: GC-AI (2차·3차 부신부전)에서는 레닌-안지오텐신 시스템에 의해 알도스테론 분비가 유지되므로 미네랄로코르티코이드 기능이 보존된다. 플루드로코르티손 대체가 필요하지 않다 (1차 부신부전과의 차이).</p>
+      <p style="margin-top:6px;font-size: calc(12px * var(--fscale, 1))">근거: GC-AI (2차·3차 부신부전)에서는 레닌-안지오텐신 시스템에 의해 알도스테론 분비가 유지되므로 미네랄로코르티코이드 기능이 보존된다. 플루드로코르티손 대체가 필요하지 않다 (1차 부신부전과의 차이).</p>
     </div>
   </div>
 </div>
@@ -623,12 +627,12 @@
       <div class="alert alert-info"><span>ℹ️</span><span>조조 코르티솔은 연속적 스펙트럼으로 해석해야 한다. 높을수록 HPA 회복 가능성 높음. 아래 기준은 가이드이며, 절대적 cut-off로 해석하지 말 것.</span></div>
       
       <div style="margin:12px 0">
-        <div class="cortisol-bar" style="height:36px;font-size:12px">
+        <div class="cortisol-bar" style="height:36px;font-size: calc(12px * var(--fscale, 1))">
           <div class="cortisol-red">&lt;150 nmol/L<br>(5 µg/dL)</div>
           <div class="cortisol-yellow">150–300 nmol/L<br>(5–10 µg/dL)</div>
           <div class="cortisol-green">&gt;300 nmol/L<br>(10 µg/dL)</div>
         </div>
-        <div style="display:flex;font-size:11px;color:var(--text2);gap:2px;margin-top:2px">
+        <div style="display:flex;font-size: calc(11px * var(--fscale, 1));color:var(--text2);gap:2px;margin-top:2px">
           <div style="flex:1.5;text-align:center">GC-AI 가능성 높음<br>생리용량 GC 유지, 수개월 후 재검</div>
           <div style="flex:1;text-align:center">불확정<br>생리용량 유지, 수주~수개월 후 재검<br>동적 검사 고려</div>
           <div style="flex:1;text-align:center">HPA 회복<br>GC 중단 가능</div>
@@ -730,8 +734,8 @@
           <div class="acc-hdr" onclick="toggleAcc(this)"><span>💊 CYP3A4 억제제 상호작용</span><span>▾</span></div>
           <div class="acc-body">
             <div class="alert alert-danger"><span>🚫</span><span>강력한 CYP3A4 억제제는 GC 혈중 농도를 현저히 증가시켜 HPA 억제 위험을 크게 높인다.</span></div>
-            <p style="font-size:12px;margin-top:6px"><strong>주요 강력 CYP3A4 억제제:</strong></p>
-            <p style="font-size:12px;line-height:1.8;margin-top:4px">보세프레비르, 세리티닙, 클라리스로마이신, 코비시스타트, 다루나비르, 이델라리십, 인디나비르, 이트라코나졸, 케토코나졸, 로피나비르, 미페프리스톤, 네파조돈, 넬피나비르, 포사코나졸, <strong>리토나비르 (가장 흔한 원인 — HIV/C형간염/COVID-19 항바이러스 복합제에 포함)</strong>, 사퀴나비르, 텔라프레비르, 텔리스로마이신, 보리코나졸</p>
+            <p style="font-size: calc(12px * var(--fscale, 1));margin-top:6px"><strong>주요 강력 CYP3A4 억제제:</strong></p>
+            <p style="font-size: calc(12px * var(--fscale, 1));line-height:1.8;margin-top:4px">보세프레비르, 세리티닙, 클라리스로마이신, 코비시스타트, 다루나비르, 이델라리십, 인디나비르, 이트라코나졸, 케토코나졸, 로피나비르, 미페프리스톤, 네파조돈, 넬피나비르, 포사코나졸, <strong>리토나비르 (가장 흔한 원인 — HIV/C형간염/COVID-19 항바이러스 복합제에 포함)</strong>, 사퀴나비르, 텔라프레비르, 텔리스로마이신, 보리코나졸</p>
           </div>
         </div>
       </div>
@@ -779,10 +783,10 @@
     </div>
     <div class="card-body">
       <div class="alert alert-warn"><span>⚠️</span><span>GC 사용/노출 중 외인성 쿠싱증후군 징후를 보이는 환자는 HPA 축이 완전히 억제되어 있다고 간주하고 GC-AI에 준하여 관리한다.</span></div>
-      <p style="font-size:12px;margin-top:8px"><strong>외인성 쿠싱증후군 증상·징후 (Table 7):</strong></p>
+      <p style="font-size: calc(12px * var(--fscale, 1));margin-top:8px"><strong>외인성 쿠싱증후군 증상·징후 (Table 7):</strong></p>
       <div class="grid2" style="margin-top:6px">
         <div>
-          <p style="font-size:11px;font-weight:600;margin-bottom:4px">증상</p>
+          <p style="font-size: calc(11px * var(--fscale, 1));font-weight:600;margin-bottom:4px">증상</p>
           <ul class="dot">
             <li>근력 약화 (특히 근위부)</li>
             <li>수면 장애 (불면증)</li>
@@ -791,7 +795,7 @@
           </ul>
         </div>
         <div>
-          <p style="font-size:11px;font-weight:600;margin-bottom:4px">징후·기타</p>
+          <p style="font-size: calc(11px * var(--fscale, 1));font-weight:600;margin-bottom:4px">징후·기타</p>
           <ul class="dot">
             <li>근위부 근위축, 과체중·복부 비만, 쇄골 상·경부 지방 축적</li>
             <li>얼굴·상부 목 붉은색 피부 및 얼굴 둥글어짐</li>
@@ -824,11 +828,11 @@
             <li>발열</li>
             <li>의식 장애 (기면·혼동·졸음·허탈·섬망·혼수·경련 포함)</li>
           </ul>
-          <p style="font-size:11px;color:var(--text2);margin-top:6px">가능한 검사 이상 소견 (진단 필수 아님):<br>저나트륨혈증, 고칼륨혈증, 탈수 소견 (BUN·Cr 상승), 저혈당, 림프구 증가증, 호산구증가증</p>
+          <p style="font-size: calc(11px * var(--fscale, 1));color:var(--text2);margin-top:6px">가능한 검사 이상 소견 (진단 필수 아님):<br>저나트륨혈증, 고칼륨혈증, 탈수 소견 (BUN·Cr 상승), 저혈당, 림프구 증가증, 호산구증가증</p>
         </div>
         <div>
-          <p style="font-size:12px;font-weight:600;margin-bottom:6px">촉발 인자</p>
-          <p style="font-size:11.5px;font-weight:600;margin-bottom:4px">모든 부신부전 공통:</p>
+          <p style="font-size: calc(12px * var(--fscale, 1));font-weight:600;margin-bottom:6px">촉발 인자</p>
+          <p style="font-size: calc(11.5px * var(--fscale, 1));font-weight:600;margin-bottom:4px">모든 부신부전 공통:</p>
           <ul class="dot">
             <li>감염 (위장관·비뇨기·호흡기·패혈증)</li>
             <li>급성 질환 (발열 포함), 신체 외상</li>
@@ -837,7 +841,7 @@
             <li>치과 처치, 심한 스트레스·통증 (불안·사별)</li>
             <li>격렬한 운동</li>
           </ul>
-          <p style="font-size:11.5px;font-weight:600;margin:6px 0 4px">GC-AI 특이 촉발 인자:</p>
+          <p style="font-size: calc(11.5px * var(--fscale, 1));font-weight:600;margin:6px 0 4px">GC-AI 특이 촉발 인자:</p>
           <ul class="dot">
             <li>장기 치료 중 갑작스러운 GC 중단</li>
             <li>생리 대체 용량 이하로의 taper</li>
@@ -960,7 +964,7 @@
           <strong>🚨 부신위기 의심 (저혈압·혈역학 불안정)</strong>
         </div>
         <div class="flow-arrow">↓</div>
-        <div class="flow-box" style="border-left:3px solid var(--red)">HC 100 mg IV/IM + HC 200 mg/24hr 정주<br><em style="font-size:11px">확인된 부신위기에서만 지속 정주</em></div>
+        <div class="flow-box" style="border-left:3px solid var(--red)">HC 100 mg IV/IM + HC 200 mg/24hr 정주<br><em style="font-size: calc(11px * var(--fscale, 1))">확인된 부신위기에서만 지속 정주</em></div>
         <div style="height:10px"></div>
         <div class="flow-box" style="border-left:3px solid var(--orange)">
           <strong>장기 구토·설사 (혈역학 안정)</strong>
@@ -1091,6 +1095,20 @@
 </div><!-- /main -->
 
 <script>
+const FONT_ZOOM_LEVELS = [1, 1.25, 1.5];
+let fontZoomIndex = 0;
+
+function applyFontZoom(scale) {
+  document.documentElement.style.setProperty('--fscale', scale);
+  const label = document.getElementById('font-zoom-label');
+  if (label) label.textContent = Math.round(scale * 100) + '%';
+}
+
+function cycleFontZoom() {
+  fontZoomIndex = (fontZoomIndex + 1) % FONT_ZOOM_LEVELS.length;
+  applyFontZoom(FONT_ZOOM_LEVELS[fontZoomIndex]);
+}
+
 function showTab(id){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -1137,8 +1155,8 @@ function buildAbbr(){
   const sorted=abbrs.slice().sort((a,b)=>a[0].localeCompare(b[0]));
   document.getElementById('abbr-grid-drop').innerHTML=sorted.map(a=>
     `<div style="background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:6px 10px;margin-bottom:4px;" data-term="${a[0].toLowerCase()}" data-def="${a[1].toLowerCase()}">
-       <span style="font-weight:700;color:var(--teal);font-size:12px;font-family:'Courier New',monospace">${a[0]}</span>
-       <div style="font-size:11px;color:var(--text2);line-height:1.45;margin-top:2px">${a[1]}</div>
+       <span style="font-weight:700;color:var(--teal);font-size: calc(12px * var(--fscale, 1));font-family:'Courier New',monospace">${a[0]}</span>
+       <div style="font-size: calc(11px * var(--fscale, 1));color:var(--text2);line-height:1.45;margin-top:2px">${a[1]}</div>
      </div>`).join('');
 }
 function filterAbbr(val){
